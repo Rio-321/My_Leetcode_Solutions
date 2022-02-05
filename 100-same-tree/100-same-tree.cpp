@@ -15,12 +15,12 @@ bool Preorder(TreeNode* p, TreeNode* q)
     if(p==NULL && q==NULL)
         return true;
     
-    if( (p==NULL || q==NULL) )
+    if( (p==NULL || q==NULL))
         return false;
     
-    if(p->val != q->val )
-        return false;
-    
+    // if(p->val != q->val )
+    //     return false;
+    if(p->val!=q->val)return false;
     
     if(Preorder(p->left,q->left)==false)
         return false;
@@ -39,7 +39,7 @@ public:
        if(Preorder(p, q))
            return true ;
        else
-return false;
+               return false;
         
     }
 };
