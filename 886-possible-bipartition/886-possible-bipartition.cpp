@@ -1,13 +1,13 @@
-bool DFS(vector<int> adj[], int curr, int par, int col, vector<bool> &visited, vector<int> &color)
+bool DFS(vector<int> adj[], int curr, int par, int col,vector<int> &color)
 {   
-    visited[curr] = true;
+    // visited[curr] = true;
     color[curr] = col;
     
     for(int x: adj[curr])
     {  
-        if(!visited[x])
+        if(color[x]==-1)
         {   
-            if(DFS(adj,x,curr,!col,visited,color)==false)
+            if(DFS(adj,x,curr,!col,color)==false)
                 return false;
         }
         else
@@ -25,7 +25,6 @@ class Solution {
 public:
     bool possibleBipartition(int n, vector<vector<int>>& dislikes) {
         
-        unordered_set<int> A,B;
         int l = dislikes.size();
         
         vector<int> adj[n+1];
@@ -39,13 +38,13 @@ public:
             adj[b].push_back(a);             
         }
         
-        vector<bool> visited(n+1);
+        // vector<bool> visited(n+1);
         vector<int> color(n+1,-1);
         
         for(int i=1;i<=n;i++)
         {   
-            if(!visited[i])
-                if(DFS(adj,i,0,1,visited,color)==false)
+            if(color[i]==-1)
+                if(DFS(adj,i,0,1,color)==false)
                     return false;
         }
         
