@@ -49,18 +49,21 @@ public:
 //         for(int i=0;i<Path2.size();i++)
 //             cout<<Path2[i]->val<<" ";
         
-        // cout<<"\n";
+//         cout<<"\n";
         
-        Path1.push_back(NULL);
-        Path2.push_back(NULL);
-        
-        for(int i=0;i<Path1.size()-1 && i<Path2.size()-1;i++)
+        // Path1.push_back(NULL);
+        // Path2.push_back(NULL);
+        int i=0;
+        for(i=0;i<Path1.size() && i<Path2.size();i++)
         {
-            if(Path1[i+1]!=Path2[i+1])
-                return Path1[i];
+            if(Path1[i]!=Path2[i])
+                break;
+                
         }
         
-        return NULL;
+        return Path1[i-1];
+        
+        // return NULL;
         
     }
 };
