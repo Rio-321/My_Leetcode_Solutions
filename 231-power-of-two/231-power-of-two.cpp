@@ -5,16 +5,8 @@ public:
         if(n<=0)
             return false;
         
-        n = abs(n);
-        int p = abs(n-1);
+        // cout<< ((n)&(n-1)) <<"\n";
         
-        int res = n & p;
-        
-        // cout<<res;
-        
-        if( res != 0 )
-            return false;
-        else
-            return true;
+       return ( ((n)&(n-1)) == 0);
     }
 };
