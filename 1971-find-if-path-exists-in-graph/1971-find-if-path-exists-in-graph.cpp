@@ -9,7 +9,7 @@ bool DFS(vector<int> adj[], int src, int dest,vector<bool> &visited)
     {
         if(!visited[x])
         { 
-            if(DFS(adj,x,dest,visited)==true)
+            if(DFS(adj,x,dest,visited))
                 return true;
         }
     }
