@@ -4,7 +4,10 @@ public:
     int f(vector<int> &coins, int ind, int sum, vector<vector<int>> &dp)
     {
         if(ind==0)
-            return (sum%coins[0]==0);
+        {
+            dp[sum][ind] = (sum%coins[0]==0);
+            return dp[sum][ind];
+        }
         
         
         if(dp[sum][ind]!=-1) return dp[sum][ind];
