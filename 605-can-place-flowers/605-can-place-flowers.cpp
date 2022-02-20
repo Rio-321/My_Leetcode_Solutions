@@ -21,6 +21,9 @@ public:
                     {
                         flowerbed[i] = 1;
                         count++;
+                     
+                        if(count>=n)
+                            return true;
                     }  
             }    
                 
