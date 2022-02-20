@@ -41,7 +41,7 @@ public:
             {
                 flowerbed[i] = 1;
                 count++;
-                // cout<<i<<" ";
+                cout<<i<<" ";
             }
                 // count++;
             
