@@ -9,6 +9,9 @@ public:
         {  
            prev = false;
            next = false;
+            
+            if(count>=n)
+             return true;
          
             if(flowerbed[i]==1)
                 continue;
@@ -41,11 +44,11 @@ public:
             {
                 flowerbed[i] = 1;
                 count++;
-                cout<<i<<" ";
+                // cout<<i<<" ";
             }
                 // count++;
             
-            
+
                 
         }
         
