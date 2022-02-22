@@ -3,18 +3,15 @@ public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
         
         int n = gas.size();
-        int tot_gas = 0, tot_cost = 0;
+        int tot_gas = 0;
         for(int i=0;i<n;i++)
-        {
-            tot_gas+=gas[i];
-            tot_cost+=cost[i];
-        }
+            tot_gas+=(gas[i]-cost[i]);
         
-        // cout<<n<<"\n";
-        // cout<<tot_gas<<"\n"<<tot_cost<<"\n";
         
-        if(tot_gas>=tot_cost)
-        {
+        if(tot_gas<0)
+            return -1;
+        
+        
             for(int i=0;i<n;i++)
             {   
                 int ind = i;
@@ -26,17 +23,17 @@ public:
                     bool flag = true;
                     for(int j=(i+1)%n; j!=i; j=(j+1)%n)
                     {
-                        rem_fuel = rem_fuel + gas[j];
+                        rem_fuel = rem_fuel + (gas[j]-cost[j]);
                         
-                        if(rem_fuel<cost[j])
+                        if(rem_fuel<0)
                         {  
                             flag = false;
                             i = j;
                             break;
                             
                         }
-                        else
-                            rem_fuel = rem_fuel - cost[j];
+                        // else
+                            // rem_fuel = rem_fuel - cost[j];
                             
                     }
                     
@@ -52,8 +49,6 @@ public:
             }
             
             return -1;
-        }
-        else
-            return -1;
+
     }
 };
