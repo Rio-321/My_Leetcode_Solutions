@@ -11,7 +11,6 @@ public:
         int fresh = 0;
         
         
-        
         for(int i=0;i<m;i++)
         {
             for(int j=0;j<n;j++)
@@ -24,8 +23,6 @@ public:
             }
         }
         
-        
-        // cout<<fresh<<"\n";
         
         while(!q.empty())
         {
@@ -59,11 +56,6 @@ public:
             
             res++;
         }
-        
-        // cout<<fresh<<"\n";
-        
-        
-        
         
         
         if(fresh==0)
