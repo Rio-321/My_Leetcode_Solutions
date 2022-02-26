@@ -2,15 +2,12 @@ class Solution {
 public:
     bool canWinNim(int n) {
         
-        // if(n<=3)
-        //     return true;
-        // if(n==4)
-        //     return false;
+        bool res = true;
         
         if(n%4==0)
-            return false;
+            res = false;
         
-        return true;
+        return res;
         
     }
 };
