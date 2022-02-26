@@ -2,12 +2,14 @@ class Solution {
 public:
     bool canWinNim(int n) {
         
-        bool res = true;
+//         bool res = true;
         
-        if(n%4==0)
-            res = false;
+//         if(n%4==0)
+//             res = false;
         
-        return res;
+//         return res;
+        
+        return (n%4!=0);
         
     }
 };
