@@ -70,7 +70,7 @@ public:
             res--;
         
         if(res==-1)
-            res = 0;
+            res = max(0,res);
         
         if(fresh>0)
             res =  -1;
