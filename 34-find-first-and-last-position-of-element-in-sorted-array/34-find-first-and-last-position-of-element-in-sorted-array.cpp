@@ -42,13 +42,10 @@ public:
         int first = First_Occure(nums,target,0,n-1);
         if(first==-1)
                 return res;
-        else
-        {
-            int second = Last_Occure(nums,target,0,n-1);
-            res[0] = first;
-            res[1] = second;
-        }
-        
+      
+        int second = Last_Occure(nums,target,0,n-1);
+        res[0] = first;
+        res[1] = second;
         
         return res;     
         
