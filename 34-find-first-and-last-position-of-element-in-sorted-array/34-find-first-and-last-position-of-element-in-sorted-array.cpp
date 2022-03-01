@@ -37,19 +37,16 @@ public:
     }
     vector<int> searchRange(vector<int>& nums, int target) {
         
-        vector<int> res;
+        vector<int> res(2,-1);
         int n = nums.size();
         int first = First_Occure(nums,target,0,n-1);
         if(first==-1)
-        {
-            res.push_back(-1);
-            res.push_back(-1);
-        }
+                return res;
         else
         {
             int second = Last_Occure(nums,target,0,n-1);
-            res.push_back(first);
-            res.push_back(second);
+            res[0] = first;
+            res[1] = second;
         }
         
         
