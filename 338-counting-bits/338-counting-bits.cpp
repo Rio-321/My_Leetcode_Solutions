@@ -11,7 +11,7 @@ public:
         
         for(int i=2;i<=n;i++)
         {   
-            if( ((i)&(1)) == 0) //even
+            if( (i & 1)==0) //even
                 res[i] = res[i/2];
             else
                 res[i] = res[i/2] + 1;
