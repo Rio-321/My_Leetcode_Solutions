@@ -13,7 +13,7 @@ public:
     
     double myPow(double x, int n) {
         
-        long long num = abs(n);
+        long long num = n;
         
 //         if(num<0)
 //         {
@@ -25,6 +25,8 @@ public:
 //         return f(x, num);
         
         double ans = 1.0;
+        if(num<0) 
+            num = -1*num;
         
         
         while(num>0)
