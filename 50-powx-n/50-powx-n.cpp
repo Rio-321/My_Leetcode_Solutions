@@ -14,7 +14,7 @@ public:
     double myPow(double x, int n) {
         
         long long num = n;
-        if(num==0) return 1;
+        // if(num==0) return 1;
         
         if(num<0)
         {
