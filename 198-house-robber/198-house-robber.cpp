@@ -12,18 +12,21 @@ public:
         dp[1] = max(nums[1],nums[0]);
         
         int max_num = dp[0];
+        int curr,f=dp[0],s=dp[1];
         
         for(int i=2;i<n;i++)
         {  
-            dp[i] = max_num + nums[i];
-            max_num = max(max_num, dp[i-1]);
+            curr = max_num + nums[i];
+            max_num = max(max_num, s);
+            f = s;
+            s = curr;
             
         }
         
-        for(int x:dp)
-            cout<<x<<" ";
+        // for(int x:dp)
+        //     cout<<x<<" ";
         
-        return max(dp[n-2], dp[n-1]);
-        
+        // return max(dp[n-2], dp[n-1]);
+        return max(f,s);        
     }
 };
