@@ -8,11 +8,12 @@ public:
         if(n==1) return nums[0];
         if(n==2) return max(nums[0], nums[1]);
         
-        dp[0] = nums[0];
-        dp[1] = max(nums[1],nums[0]);
+        // dp[0] = nums[0];
+        // dp[1] = max(nums[1],nums[0]);
         
-        int max_num = dp[0];
-        int curr,f=dp[0],s=dp[1];
+        
+        int max_num = nums[0];
+        int curr,f=nums[0],s=nums[1];
         
         for(int i=2;i<n;i++)
         {  
