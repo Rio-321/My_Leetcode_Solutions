@@ -14,22 +14,8 @@ public:
         int count = 0;
         
         for(int i=0;i<nums.size();i++)
-        {
             mp[nums[i]].push_back(i);
-            
-//             if(mp.find(nums[i])!=mp.end())
-//             {
-//                 for(auto x: mp[nums[i]])
-//                 {
-//                     if((x*i)%k == 0)
-//                         count++;
-//                 }
-//             }
-            
-            
-            
-        }
-        
+
         
         vector<int> vec;
         for(int i=1;i*i<=k;i++)
@@ -43,9 +29,8 @@ public:
             unordered_map<int,int> m;
             for(auto ind:x.second)
             {   
-                
                 count = count + m[k/GCD(k,ind)];
-                
+        
                 for(auto j:vec)
                     if(ind%j==0) m[j]++;
             }
