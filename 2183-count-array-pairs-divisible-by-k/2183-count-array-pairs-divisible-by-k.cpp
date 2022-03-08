@@ -30,10 +30,9 @@ public:
             sum = sum + mp[rem];
             
             for(auto x:vec)
-            {
                 if(nums[i]%x == 0)
                     mp[x]++;
-            }
+            
           
             // cout<<rem<<" ";
         }
