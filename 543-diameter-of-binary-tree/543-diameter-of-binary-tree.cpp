@@ -14,12 +14,12 @@ public:
     
     int res = 0;
     
-    int Height(TreeNode* root)
+    int Height(TreeNode* root1)
     {
-        if(root==NULL) return 0;
+        if(root1==NULL) return 0;
         
-        int left = Height(root->left);
-        int right = Height(root->right);
+        int left = Height(root1->left);
+        int right = Height(root1->right);
         
         res = max(res, left+right);
         
@@ -28,12 +28,16 @@ public:
     
     int diameterOfBinaryTree(TreeNode* root) {
         
-        // int h_left = Height(root->left);
-        // int h_right = Height(root->right);
+        int h_left = Height(root->left);
+        int h_right = Height(root->right);
         
-        int h = Height(root);
+        // int h = Height(root);
         
-        // int res = max(res, h_left + h_right);
+        // cout<<res<<"\n";
+        // cout<<h_left<<" and "<<h_right<<"\n";
+        
+        
+         res = max(res, h_left + h_right);
         
         return res;
         
