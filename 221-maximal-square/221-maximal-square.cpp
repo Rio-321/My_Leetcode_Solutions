@@ -32,12 +32,12 @@ public:
                     dp[i][j] = 0;
                 else
                 {
-                    if(matrix[i-1][j]=='0' || matrix[i][j-1]=='0' || matrix[i-1][j-1]=='0')
-                        dp[i][j] = 1;
-                    else
-                    {
+                    // if(matrix[i-1][j]=='0' || matrix[i][j-1]=='0' || matrix[i-1][j-1]=='0')
+                    //     dp[i][j] = 1;
+                    // else
+                    // {
                         dp[i][j] = min(dp[i-1][j-1], min(dp[i-1][j], dp[i][j-1]))+ 1;
-                    }
+                    // }
                 }
                 
                 res = max(res,dp[i][j]);
