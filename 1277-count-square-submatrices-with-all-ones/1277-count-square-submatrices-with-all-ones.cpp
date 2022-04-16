@@ -13,22 +13,14 @@ public:
            dp[i][0] = matrix[i][0];
             res = res + dp[i][0];
         }
-           
-        cout<<res<<"\n";    
-      
             
+           
         
         for(int j=1;j<n;j++)
         {
            dp[0][j] = matrix[0][j]; 
             res = res + dp[0][j];
         }
-        
-        cout<<res<<"\n";
-            
-
-            
-        
         
         for(int i=1;i<m;i++)
         {
