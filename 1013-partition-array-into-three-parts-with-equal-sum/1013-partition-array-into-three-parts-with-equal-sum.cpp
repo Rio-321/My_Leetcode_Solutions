@@ -4,23 +4,34 @@ public:
         
         int n = arr.size();
         
-        vector<int> suffix(n);
-        for(int i=n-1;i>=0;i--)
-            suffix[i] = ((i<n-1) ? suffix[i+1] : 0) + arr[i];
-        
-        for(auto x:suffix)
-            cout<<x<<" ";
-        
-        unordered_set<int> St;
         int sum = 0;
-        
         for(int i=0;i<n;i++)
         {
             sum = sum + arr[i];
-            if(sum%2==0 && St.find(sum/2)!=St.end() && i<n-1 && suffix[i+1]==sum/2)
-                return true;
-            St.insert(sum);
         }
+        
+        if(sum%3!=0)
+            return false;
+        else
+        {
+            int tar = sum/3;
+            int cnt = 0;
+            int sum1 = 0;
+            for(int i=0;i<n;i++)
+            {
+                sum1 = sum1 + arr[i];
+                
+                if(sum1==tar)
+                {
+                    sum1 = 0;
+                    cnt++;
+                }
+                
+                if(i<n-1 && cnt==2)
+                    return true;
+            }
+        }
+        
         
         return false;
             
