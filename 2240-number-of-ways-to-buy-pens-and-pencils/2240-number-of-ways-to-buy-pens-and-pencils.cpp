@@ -10,7 +10,7 @@ public:
         
         for(int i=0;i<=lim;i++)
         {
-            res = res + ((total - (long long)(i*fir))/sec + 1);
+            res = res + ((total - (i*fir))/sec + 1);
         }
         
         return res;
