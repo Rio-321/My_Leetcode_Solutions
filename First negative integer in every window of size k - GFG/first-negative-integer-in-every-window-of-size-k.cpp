@@ -32,57 +32,37 @@ int main() {
 vector<long long> printFirstNegativeInteger(long long int A[],
                                              long long int N, long long int K) {
                                                  
-     queue<long long> ind;
-     vector<long long> res;
-     
-     for(long long i=0;i<K;i++)
-     {
-         if(A[i]<0)
-          ind.push(i);
-     }
-     
-    //  cout<<ind.front()<<"\n";
-     
-     
-     
-     for(long long i=K-1;i<N;i++)
-     {
-         long long f = i-K+1;
+    long long i=0,j=0;
+    queue<long long> q;
+    vector<long long> res;
+    
+    
+    while(j<N)
+    {
+        if(A[j]<0)
+         q.push(A[j]);
          
-         if(A[i]<0 && i!=K-1)
-            ind.push(i);
+        if(j-i+1==K)
+        {
+            if(q.empty())
+             res.push_back(0);
+            else
+            {
+                res.push_back(q.front());
+                
+                if(q.front()==A[i])
+                   q.pop();
+            }
+            
+            i++;
+        }
          
-         if(ind.empty())
-            res.push_back(-1);
-         else if(ind.front()==f)
-         {
-             res.push_back(ind.front());
-             ind.pop();
-         }
-         else
-         {
-            res.push_back(ind.front());
-         }
-         
-     }
-     
-     for(auto x:res)
-     {
-         x = A[x];
-     }
-     
-     vector<long long> ans;
-     
-     for(int i=0;i<res.size();i++)
-     { 
-        long long x = 0;
         
-        if(res[i]!=-1)
-        x = A[res[i]];
-        
-        ans.push_back(x);  
-     }
-       
-     return ans;
+        j++;
+    }
+    
+    
+    
+    return res;
                                                  
  }
