@@ -2,8 +2,7 @@ class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
         
-        map<char,int> P_map;
-        // map<char,int> S_map;
+        unordered_map<char,int> P_map;
         
         for(auto x:p)
             P_map[x]++;
