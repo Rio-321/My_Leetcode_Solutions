@@ -6,8 +6,9 @@ public:
         vector<int> prev(n,0);
         vector<int> past(n,0);
         
-        // stack<int> St;
         vector<int> St;
+        int area = 0;
+        int res = INT_MIN;
         
         for(int i=0;i<n;i++)
         {
@@ -40,25 +41,27 @@ public:
             
             if(St.empty())
             {
-                past[i] = n;
+                // past[i] = n;
+                area = (n-prev[i]-1)*heights[i];
+                // res = max()
             }
             else
-                past[i] = St.back();
+                area = (St.back()-prev[i]-1)*heights[i];
+                // past[i] = St.back();
             
             St.push_back(i);
-        }
-        
-        // for(auto x:past)
-        //     cout<<x<<" ";
-        
-        int res = INT_MIN;
-        for(int i=0;i<n;i++)
-        {
-            int len  = past[i]-prev[i]-1;
-            int area = heights[i]*len;
-            
             res = max(res,area);
         }
+        
+
+//         int res = INT_MIN;
+//         for(int i=0;i<n;i++)
+//         {
+//             int len  = past[i]-prev[i]-1;
+//             int area = heights[i]*len;
+            
+//             res = max(res,area);
+//         }
         
         
         return res;
