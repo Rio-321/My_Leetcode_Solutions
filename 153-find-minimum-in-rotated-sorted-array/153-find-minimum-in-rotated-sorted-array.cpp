@@ -10,6 +10,8 @@ public:
             return nums[0];
         
         
+        
+        
         int res = INT_MAX;
         
         int low = 0,high=n-1;
