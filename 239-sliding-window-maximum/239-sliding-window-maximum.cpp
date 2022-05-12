@@ -13,13 +13,14 @@ public:
             while(!res.empty() && nums[res.back()]<nums[j])
                 res.pop_back();
             
-            
             res.push_back(j);
+            
+             if(res.front()<i)
+                res.pop_front();
             
             if(j-i+1==k)
             { 
-                while(res.front()<i)
-                    res.pop_front();
+
                 
                 ans.push_back(nums[res.front()]);
                 
