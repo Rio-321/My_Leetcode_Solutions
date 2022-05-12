@@ -3,36 +3,36 @@ public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         
         int i=0,j=0;
-        map<int,int> mp;
         
-        vector<int> res;
+        deque<int> res;
+        
+        vector<int> ans;
         
         while(j<nums.size())
         {   
-            mp[nums[j]]++;
+            while(!res.empty() && nums[res.back()]<nums[j])
+                res.pop_back();
+            
+            
+            res.push_back(j);
+            
             if(j-i+1==k)
-            {
-                auto it = mp.end();
-                it--;
-                res.push_back(it->first);
+            { 
+                while(res.front()<i)
+                    res.pop_front();
                 
-                
-                mp[nums[i]]--;
-                if(mp[nums[i]]==0)
-                    mp.erase(nums[i]);
+                ans.push_back(nums[res.front()]);
                 
                 i++;
                 
             }
-            
-         
             
             j++;
             
             
         }
         
-        return res;
+        return ans;
         
     }
     
