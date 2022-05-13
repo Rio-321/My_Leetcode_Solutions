@@ -14,14 +14,8 @@ public:
         vector<vector<string>> ans;
         
         for(auto x:mp)
-        {   
-            vector<string> temp_vect;
-            for(auto str:x.second)
-            {
-                temp_vect.push_back(str);
-            }
-            
-            ans.push_back(temp_vect);
+        {               
+            ans.push_back(x.second);
         }
         
         return ans;
