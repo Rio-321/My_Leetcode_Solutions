@@ -17,10 +17,9 @@ public:
             return root;
         
         TreeNode *r_temp = invertTree(root->right);
-        TreeNode *l_temp = invertTree(root->left);
+        root->right = invertTree(root->left);
         
         root->left = r_temp;
-        root->right = l_temp;
         
         return root;
         
