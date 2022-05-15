@@ -9,11 +9,8 @@ public:
 
         int res = INT_MIN;
         for(int i=1;i<special.size();i++)
-        {
-            int diff = special[i]-special[i-1]-1;
-            res = max(res,diff);
+            res = max(res,special[i]-special[i-1]-1);
             
-        }
         
         return res;
     }
