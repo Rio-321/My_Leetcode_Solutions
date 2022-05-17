@@ -1,5 +1,22 @@
 class Solution {
-public:    
+public:   
+    
+    int Count_Palind(string &str,int l, int r,int n)
+    {   
+        int res = 0;
+        while(l>=0 && r<=n-1)
+        {
+            if(str[l]!=str[r])
+                break;
+            else
+                res++;
+            
+            l--;
+            r++;
+        }
+        
+        return res;
+    }
     int countSubstrings(string s) {
       
         int res = 0;
@@ -10,30 +27,9 @@ public:
         
         for(int i=0;i<n;i++)
         {
-            l = i,r=i;
-            while(l>=0 &&r<=n-1)
-            {
-                if(s[l]!=s[r])
-                    break;
-                else
-                    res++;
-                
-                l--;
-                r++;
-            }
-            
-            l = i,
-            r = i+1;
-            while(l>=0 && r<=n-1)
-            {
-                if(s[l]!=s[r])
-                    break;
-                else
-                    res++;
-                
-                l--;
-                r++;
-            }
+            res += Count_Palind(s,i,i,n);
+            res += Count_Palind(s,i,i+1,n);
+           
         }
         
         
