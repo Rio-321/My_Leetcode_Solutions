@@ -33,16 +33,7 @@ public:
         
         find_path(root,p,path1);
         find_path(root,q,path2);
-        
-        // for(auto x:path1)
-        //     cout<<x->val<<" ";
-            
- 
-        
-        // cout<<"\n";
-        
-        // for(auto x:path2)
-            // cout<<x->val<<" ";
+
         
 
         int i=1;
