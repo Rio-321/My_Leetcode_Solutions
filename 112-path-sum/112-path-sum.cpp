@@ -15,18 +15,16 @@ public:
     bool is_path(TreeNode* root, int &sum, int &targetSum)
     {   
         if(root==NULL) return false;
+        
         sum += root->val;
-        if(root->left==NULL && root->right==NULL)
-        {
-            if(sum==targetSum) return true;
-        }
         
-        if(root->left!=NULL && is_path(root->left,sum,targetSum))
-             return true;
-        
-        if(root->right!=NULL && is_path(root->right,sum,targetSum))
+        if(root->left==NULL && root->right==NULL && sum==targetSum)
             return true;
         
+        
+        if(is_path(root->left,sum,targetSum) || is_path(root->right,sum,targetSum) )
+             return true;
+
         sum -= root->val;
         return false;
             
