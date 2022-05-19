@@ -12,7 +12,7 @@
 class Solution {
 public:
     
-    bool is_path(TreeNode* root, int &sum, int &targetSum)
+    bool is_path(TreeNode* root, int &sum, int targetSum)
     {   
         if(root==NULL) return false;
         
@@ -22,9 +22,9 @@ public:
             return true;
         
         
-        if(is_path(root->left,sum,targetSum) || is_path(root->right,sum,targetSum) )
+      if(is_path(root->left,sum,targetSum) || is_path(root->right,sum,targetSum))
              return true;
-
+   
         sum -= root->val;
         return false;
             
