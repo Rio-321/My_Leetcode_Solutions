@@ -7,7 +7,6 @@ public:
         vector<int> suffix(n,1);      
         
         
-        
         for(int i=0;i<n;i++)
             prefix[i] = (i>0) ? prefix[i-1]*nums[i] : 1*nums[i];
         
