@@ -11,7 +11,7 @@ public:
 class Solution {
 public:
     
-    int total_importance(unordered_map<int,vector<int>> adj,int src,unordered_map<int,int> imp)
+    int total_importance(unordered_map<int,Employee*> adj,int src)
     {
         int res = 0;
         queue<int> q;
@@ -22,9 +22,9 @@ public:
             int curr = q.front();
             q.pop();
             
-            res += imp[curr];
+            res += adj[curr]->importance;
             
-            for(auto x:adj[curr])
+            for(auto x:adj[curr]->subordinates)
                 q.push(x);
         }
         
@@ -38,10 +38,12 @@ public:
         int n = employees.size();
         int res = 0;
         
-        // vector<int> adj[n+1];
-        unordered_map<int,vector<int>> adj;
+
+        unordered_map<int, Employee*> adj;
         unordered_map<int,int> imp;
-        // vector<int> imp(n+1,0);
+        
+        
+
         
         cout<<n<<"\n";
         
@@ -49,15 +51,17 @@ public:
         for(int i=0;i<n;i++)
         {   
             int curr = employees[i]->id;
-            imp[curr] = employees[i]->importance;
+            adj[curr] = employees[i];
             
             
-            for(auto x:employees[i]->subordinates)
-                adj[curr].push_back(x);
+//             for(auto x:employees[i]->subordinates)
+//                 adj[curr].push_back(x);
                 
         }
         
-        res = total_importance(adj,src,imp);
+        res = total_importance(adj,src);
+        
+        
         
         // cout<<n;
         return res;
