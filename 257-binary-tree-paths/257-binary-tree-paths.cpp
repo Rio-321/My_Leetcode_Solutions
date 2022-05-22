@@ -11,38 +11,34 @@
  */
 class Solution {
 public:
-    void print_path(TreeNode* root, vector<string> &res, string &path)
+    void print_path(TreeNode* root, vector<string> &res, string path)
     {   
-        if(root==NULL) return;
-        
-        string temp = to_string(root->val);
-        path += temp ;
-        cout<<path<<" ";
         
         if(root->left==NULL && root->right==NULL)
         {   
-            // path.erase(path.length()-2);
             res.push_back(path);
-            path.erase(path.length()-temp.length());
             return;
         }
         
-        path += "->";
         
+        if(root->left)
+            print_path(root->left,res, path + "->" + to_string(root->left->val));
         
-        print_path(root->left,res,path);
-        print_path(root->right,res,path);
+        if(root->right)
+        print_path(root->right,res, path + "->" + to_string(root->right->val));
           
-        path.erase(path.length()-temp.length()-2);
          return;
          
     }
+    
     vector<string> binaryTreePaths(TreeNode* root) {
         
         vector<string> res;
-        string path="";
+        // string path="";
         
-        print_path(root,res,path);
+        if(root==NULL) return res;
+        
+        print_path(root,res,to_string(root->val));
         
         return res;
     }
