@@ -18,13 +18,6 @@ public:
             st.push_back(i);
         }
         
-//                 for(auto x:dp)
-//             cout<<x<<" ";
-        
-//         cout<<"\n";
-        
-
-        
         st.clear();
         
         for(int i=n-1;i>=0;i--)
