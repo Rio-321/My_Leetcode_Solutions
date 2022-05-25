@@ -19,7 +19,7 @@ public:
             
             if(res==sum)
             {
-                ans.push_back({nums[l-1], nums[i],nums[j]});
+                ans.emplace_back(std::vector<int>{nums[l-1], nums[i],nums[j]});
                 i++;
                 j--;
             }
