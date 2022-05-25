@@ -56,17 +56,26 @@ public:
             string f = queries[i][0];
             string s = queries[i][1];
             
-            if(mp.find(f)!=mp.end() && mp.find(s)!=mp.end())
+            if(mp.find(f)==mp.end() || mp.find(s)==mp.end())
             {
-                 double res = 1;
+                ans.push_back(-1.0);
+            }
+            else
+            {
+                double res = 1;
                  unordered_set<string> visited;
                  if(!find_second(mp,f,s,res, visited,ans))
                      ans.push_back(-1.0);
             }
-            else
-            {
-                ans.push_back(-1.0);
-            }
+            
+//             if(mp.find(f)!=mp.end() && mp.find(s)!=mp.end())
+//             {
+                 
+//             }
+//             else
+//             {
+//                 ans.push_back(-1.0);
+//             }
             
         
         }
