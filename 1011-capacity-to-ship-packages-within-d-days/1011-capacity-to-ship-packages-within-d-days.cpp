@@ -43,16 +43,15 @@ public:
         
         if(days==1) return sum;
         
-        int low = 1,high = sum;
+        int low = *max_element(weights.begin(), weights.end());
+        int high = sum;
         
         int ans = 0;
         // cout<<sum<<"\n";
         
         while(low<=high)
         {
-            int mid = low + (high-low)/2;
-            // cout<<low<<" "<<mid<<" "<<high<<"\n";
-            
+            int mid = low + (high-low)/2;            
             
             if(is_possible(weights,days,mid))
             {
