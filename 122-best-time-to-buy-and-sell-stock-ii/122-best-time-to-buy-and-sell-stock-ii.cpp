@@ -5,18 +5,11 @@ public:
         int n = prices.size();
         int profit = 0;
         int i=0;
-        while(i<(prices.size()-1))
+        
+        for(int i=1;i<n;i++)
         {
-            while(i<n-1 && prices[i] >= prices[i+1])
-            {
-                i++;
-            }
-            while(i<n-1 && prices[i] < prices[i+1])
-            {
-                profit = profit + (prices[i+1]-prices[i]);
-                i++;
-            }
-            
+            if(prices[i]>prices[i-1])
+                profit += prices[i]-prices[i-1];
         }
         
         return profit;
