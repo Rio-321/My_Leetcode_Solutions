@@ -17,6 +17,8 @@ public:
             {
                 if(st.find(x)==st.end())
                     q.push(x);
+                
+                if(st.size()==rooms.size()) return true;
             }
         }
         
