@@ -14,10 +14,10 @@ public:
         {
             temp = temp + s[i];
             // cout<<temp<<"\n";
-            if((st.find(temp)!=st.end() && i<n && is_possible(s,i+1,st,dp))) // string is in the set
+            if((st.find(temp)!=st.end() && i<n && ( i == n-1 || is_possible(s,i+1,st,dp)))) // string is in the set
             {  
-                if(i<n-1)
-                    dp[i+1] = 1;
+                // if(i<n-1)
+                    dp[i] = 1;
                 return true;
             }                
         }
