@@ -44,8 +44,6 @@ public:
             curr = temp;
             
             cnt++;
-            // if(cnt>right)
-                // break;
         }
         
         if(prevN!=NULL)
