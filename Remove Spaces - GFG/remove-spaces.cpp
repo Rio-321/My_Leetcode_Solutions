@@ -25,7 +25,7 @@ class Solution
              
         }
         
-        // s[count] = '\0';
+        // s[count] = char(0);
         
         return res;
         
