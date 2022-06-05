@@ -23,18 +23,12 @@ public:
         ListNode* curr = head;
         ListNode* head1 = NULL;
         int cnt = 1;
+        
         while(curr!=NULL)
         {
             if(cnt==left)
             {
-                startN = prevN;
                 head1 = curr;
-            }
-            
-            if(cnt==right)
-            {
-                endN = curr->next;
-                curr->next = NULL;
                 break;
             }
             
@@ -43,38 +37,31 @@ public:
             cnt++;
         }
         
-        // cout<<startN->val<<"\n";
-        // cout<<endN->val<<"\n";
-        
-        cout<<"\n\n";
-        
-        
-        curr = head1;
-        
-        // cout<<curr->val<<"\n";
-        
-        ListNode* prev = NULL;
         ListNode* temp = NULL;
+        ListNode* lastNode = NULL;
+        
+        
         while(curr!=NULL)
-        {  
-            cout<<curr->val<<" ";
-            
+        {
             temp = curr->next;
-            curr->next = prev;
-            prev = curr;
+            curr->next = lastNode;
+            lastNode = curr;
             curr = temp;
+            
+            cnt++;
+            if(cnt>right)
+                break;
         }
         
-//         cout<<prev->val<<" ";
-        
-        
-        // startN->next->next = endN;
-        head1->next = endN;
-        
-        if(startN==NULL)
-            head = prev;
+        if(prevN!=NULL)
+            prevN->next = lastNode;
         else
-           startN->next = prev;
+            head = lastNode;
+        
+        
+        head1->next = temp;
+        
+
         
         return head;
         
