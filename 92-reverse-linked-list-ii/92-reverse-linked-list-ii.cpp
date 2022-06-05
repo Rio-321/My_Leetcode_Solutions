@@ -16,12 +16,10 @@ public:
             return head;
         
         ListNode* prevN = NULL;
-        ListNode* nextN = NULL;
-        ListNode* headN = NULL;
-        ListNode* startN = NULL;
-        ListNode* endN = NULL;
         ListNode* curr = head;
         ListNode* head1 = NULL;
+        ListNode* temp = NULL;
+        ListNode* lastNode = NULL;
         int cnt = 1;
         
         while(curr!=NULL)
@@ -37,8 +35,7 @@ public:
             cnt++;
         }
         
-        ListNode* temp = NULL;
-        ListNode* lastNode = NULL;
+
         
         
         while(curr!=NULL)
