@@ -35,10 +35,8 @@ public:
             cnt++;
         }
         
-
         
-        
-        while(curr!=NULL)
+        while(curr!=NULL && cnt<=right)
         {
             temp = curr->next;
             curr->next = lastNode;
@@ -46,8 +44,8 @@ public:
             curr = temp;
             
             cnt++;
-            if(cnt>right)
-                break;
+            // if(cnt>right)
+                // break;
         }
         
         if(prevN!=NULL)
