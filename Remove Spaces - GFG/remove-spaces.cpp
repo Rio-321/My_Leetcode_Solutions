@@ -17,15 +17,15 @@ class Solution
             {
                 while(i<s.length() && s[i]!=' ')
                 {
-                    res = res + s[i];
+                    // res = res + s[i];
                     i++;
                 }
             }
             else
-            i++;
+            s.erase(s.begin()+i);
         }
         
-        return res;
+        return s;
     }
 };
 
