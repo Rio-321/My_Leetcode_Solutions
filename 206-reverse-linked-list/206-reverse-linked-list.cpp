@@ -14,19 +14,17 @@ public:
         
         ListNode* prev = NULL;
         ListNode* curr = head;
+        ListNode* temp = NULL;
+        
         while(curr!=NULL)
         {
-            // cout<<curr->val<<" ";
-            ListNode* temp = curr->next;
+            temp = curr->next;
             curr->next = prev;
             prev = curr;
             curr = temp;
         }
+        head = prev;
         
-        // cout<<"\n";
-        
-        // cout<<prev->val;
-        
-        return prev;
+        return head;
     }
 };
