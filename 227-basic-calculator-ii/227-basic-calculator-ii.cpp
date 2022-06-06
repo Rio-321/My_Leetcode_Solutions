@@ -34,8 +34,8 @@ public:
                 }
                 else if(oper=='-')
                 {
-                    curr = -1*num;
-                    st.push(curr);
+                    // curr = -1*num;
+                    st.push(-num);
                 }
                 else
                     st.push(num);
