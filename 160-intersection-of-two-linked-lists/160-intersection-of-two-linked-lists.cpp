@@ -14,29 +14,17 @@ public:
         ListNode* curr1 = headA;
         ListNode* curr2 = headB;
         
-        int len1 = -1,len2 = -1;
-        
-        int cnt = 0;
-        
         while(curr1!=curr2)
         {
             if(curr1==NULL)
-            {
-               curr1 = headB; 
-               len1 = cnt;
-            } 
+                curr1 = headB;
             else
                 curr1 = curr1->next;
             
             if(curr2==NULL)
-            {
-                len2 = cnt;
                 curr2 = headA;
-            }   
             else
                 curr2 = curr2->next;
-            
-            cnt++;
             
         }
         
