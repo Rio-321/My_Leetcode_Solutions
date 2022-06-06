@@ -1,13 +1,7 @@
 class Solution {
 public:
     int findUnsortedSubarray(vector<int>& nums) {
-        
         int n = nums.size();
-//         vector<int> temp;
-//             for(auto x:nums)
-//                 temp.push_back(x);
-           
-//         sort(temp.begin(), temp.end());
         
         int left = 0;
         int right = -1;
@@ -21,17 +15,21 @@ public:
                 left = i;
             
             minA = min(minA, nums[i]);
-        }
-        
-        for(int i=0;i<n;i++)
-        {
-            if(maxA>nums[i])
-                right = i;
             
-            maxA = max(maxA, nums[i]);
+             if(maxA>nums[n-1-i])
+                right = n-1-i;
+            
+            maxA = max(maxA, nums[n-1-i]);
         }
         
-        // cout<<left<<" "<<right<<"\n";
+//         for(int i=0;i<n;i++)
+//         {
+//             if(maxA>nums[i])
+//                 right = i;
+            
+//             maxA = max(maxA, nums[i]);
+//         }
+        
         
    
         int res = right-left+1;
