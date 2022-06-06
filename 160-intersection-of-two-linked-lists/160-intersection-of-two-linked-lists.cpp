@@ -10,38 +10,78 @@ class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         
-        set<ListNode*> st;
         
         ListNode* curr1 = headA;
         ListNode* curr2 = headB;
         
-        while(curr1!=NULL || curr2!=NULL)
+        int len1 = -1,len2 = -1;
+        
+        int cnt = 0;
+        
+        while(curr1!=curr2)
         {
-            if(curr1==curr2)
-                return curr1;
-            if(st.find(curr1)!=st.end())
-                return curr1;
-            if(st.find(curr2)!=st.end())
-                return curr2;
-            
-            
-            // cout<<curr1->val<<" "<<curr2->val<<"\n";
-            
-            if(curr1!=NULL)
+            if(curr1==NULL)
             {
-                st.insert(curr1);
-                curr1 = curr1->next;  
-            }
-                
+               curr1 = headB; 
+               len1 = cnt;
+            } 
+            else
+                curr1 = curr1->next;
             
-            if(curr2!=NULL)
+            if(curr2==NULL)
             {
-                st.insert(curr2);
+                len2 = cnt;
+                curr2 = headA;
+            }   
+            else
                 curr2 = curr2->next;
-            }
-                   
+            
+            cnt++;
+            
         }
         
-        return NULL;
+        return curr1;
+        
+        
+        
+        
+        
+        
+        // ******************************************************************
+        //MY APROACH
+        
+//         set<ListNode*> st;
+        
+//         ListNode* curr1 = headA;
+//         ListNode* curr2 = headB;
+        
+//         while(curr1!=NULL || curr2!=NULL)
+//         {
+//             if(curr1==curr2)
+//                 return curr1;
+//             if(st.find(curr1)!=st.end())
+//                 return curr1;
+//             if(st.find(curr2)!=st.end())
+//                 return curr2;
+            
+            
+//             // cout<<curr1->val<<" "<<curr2->val<<"\n";
+            
+//             if(curr1!=NULL)
+//             {
+//                 st.insert(curr1);
+//                 curr1 = curr1->next;  
+//             }
+                
+            
+//             if(curr2!=NULL)
+//             {
+//                 st.insert(curr2);
+//                 curr2 = curr2->next;
+//             }
+                   
+//         }
+        
+//         return NULL;
     }
 };
