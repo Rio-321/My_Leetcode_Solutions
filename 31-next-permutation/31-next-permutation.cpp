@@ -18,8 +18,30 @@ public:
             i--;
             
         }
+        
+        
+        int low = i+1,high = n-1;
+        int ans = -1;
+        
+//         while(low<=high && ind!=-1)
+//         {
+//             int mid = (low+high)/2;
+            
+//             if(nums[mid]>=nums[ind])
+//             {
+//                 ans = mid;
+//                 low = mid+1;
+//             }
+//             else
+//                 high = mid -1;
+//         }
+        
+//         if(ans!=-1)
+//         swap(nums[i], nums[ans]);
+        
             
         i = n-1;
+        
         for(i;i>=0 && ind!=-1;i--)
         {
             if(nums[i]>nums[ind])
