@@ -7,9 +7,7 @@ public:
         
         while(l<h)
         {
-            swap(s[l],s[h]);
-            l++;
-            h--;
+            swap(s[l++],s[h--]);
         }
         
         return;
