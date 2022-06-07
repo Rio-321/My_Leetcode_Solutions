@@ -10,7 +10,7 @@ public:
         
         while(i>=0)
         {
-            if(nums[i]<nums[i+1]) //
+            if(nums[i]<nums[i+1]) 
             {
                 ind = i;
                 break;
@@ -18,8 +18,6 @@ public:
             i--;
             
         }
-        
-        // cout<<i<<"\n";
             
         i = n-1;
         for(i;i>=0 && ind!=-1;i--)
