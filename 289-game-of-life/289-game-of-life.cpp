@@ -26,7 +26,6 @@ public:
             }
         
         int cnt = ans[i][j];
-        // cout<<cnt;
         
         if(board[i][j]==1)
         {
@@ -52,20 +51,8 @@ public:
             for(int j=0;j<n;j++)
             {
                 convert(board,i,j,ans);
-                // cout<<" ";
             }
-            // cout<<"\n";
         }
-        
-//         for(int i=0;i<m;i++)
-//         {
-//             for(int j=0;j<n;j++)
-//             {
-//                 board[i][j] = ans[i][j];
-//             }
-//         }
-        
-        
-        
+    
     }
 };
