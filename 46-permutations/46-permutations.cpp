@@ -22,8 +22,14 @@ public:
     }
     vector<vector<int>> permute(vector<int>& nums) {
          
-        All_permutations(nums,0,nums.size()-1);
+        int n = nums.size()-1;
+        if(n==0)
+        {
+            ans.push_back(nums);
+            return ans;
+        }
         
+        All_permutations(nums,0,n);
         return ans;
         
     }
