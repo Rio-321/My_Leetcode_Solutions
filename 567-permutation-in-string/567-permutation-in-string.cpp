@@ -8,27 +8,39 @@ public:
         if(n2<n1)
             return false;
         
-        unordered_map<char,int> mp;
+        // unordered_map<char,int> mp;
+        int freq[26] = {0};
         for(auto ch:s1)
-            mp[ch]++;
+            freq[ch-'a']++;
         
         
         int i=0;
         int j=0;
         while(i<n2)
         {
-            mp[s2[i]]--;
-            if(mp[s2[i]]==0)
-                mp.erase(s2[i]);
+            freq[s2[i]-'a']--;
+            // if(mp[s2[i]]==0)
+            //     mp.erase(s2[i]);
             
             if(i-j+1==n1)
             {
-                if(mp.size()==0)
+                bool flag = 1;
+                for(int k=0;k<26;k++)
+                {
+                    if(freq[k]!=0)
+                        flag = 0;
+                }
+                
+                if(flag==1)
                     return true;
                 
-                mp[s2[j]]++;
-                if(mp[s2[j]]==0)
-                    mp.erase(s2[j]);
+                
+                // if(mp.size()==0)
+                //     return true;
+                
+                freq[s2[j]-'a']++;
+                // if(mp[s2[j]]==0)
+                //     mp.erase(s2[j]);
                 
                 j++;
             }
