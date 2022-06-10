@@ -1,7 +1,6 @@
 class Solution {
 public:
     
-   // vector<vector<string>> ans;
    int cnt = 0;
    bool is_safe(vector<vector<char>> &board, int row, int col,int n)
         {
@@ -30,9 +29,8 @@ public:
     {
         if(col==n) 
         {
-            // ans.push_back(board);
             cnt++;
-            return ;
+            return;
         }
         
         for(int i=0;i<n;i++)
@@ -47,29 +45,16 @@ public:
             }
         }
         
-        // return false;
         return;
     }
     
-    int totalNQueens(int n) {
+    int totalNQueens(int n) 
+    {
         
         if(n==1) return 1;
         
         vector<vector<char>> board(n, vector<char>(n,'.'));
-        // string temp = "";
-        // for(int i=0;i<n;i++)
-        //     temp.push_back('.');
-        
-        // vector<string> board(n,temp);
-
-        // for(int i=0;i<n;i++)
-        // {
-        //     for(int j=0;j<n;j++)
-        //         cout<<board[i][j];
-        //     cout<<"\n";
-        // }
-        
-        
+    
         Solve_Queen(board,0,n);
      
         
