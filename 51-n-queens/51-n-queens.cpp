@@ -4,7 +4,7 @@ public:
     //Optimized Solution
      vector<vector<string>> ans;
     
-     bool is_safe(vector<string> &board, int row, int col,int n)
+     bool is_safe(vector<string> &board, int row, int col)
     {
         for(int j=0;j<col;j++)
         {
@@ -18,7 +18,7 @@ public:
                 return false;
         }
         
-        for(int i=row,j=col;i<n&&j>=0;i++,j--)
+        for(int i=row,j=col;i<board.size()&&j>=0;i++,j--)
         {
             if(board[i][j]=='Q')
                 return false;
@@ -27,21 +27,21 @@ public:
         return true;
     }
     
-    void Solve_Queen(vector<string> &board,int col, int n)
+    void Solve_Queen(vector<string> &board,int col)
     {
-        if(col==n) 
+        if(col==board.size()) 
         {
             ans.push_back(board);
             return ;
         }
         
-        for(int i=0;i<n;i++)
+        for(int i=0;i<board.size();i++)
         {
-            if(is_safe(board,i,col,n))
+            if(is_safe(board,i,col))
             {
                 board[i][col] = 'Q';
                 
-                 Solve_Queen(board,col+1,n);
+                 Solve_Queen(board,col+1);
 
                  board[i][col] = '.';
             }
@@ -56,7 +56,7 @@ public:
         vector<string> board(n,string(n,'.'));
         
         
-        Solve_Queen(board,0,n);
+        Solve_Queen(board,0);
      
         
         return ans;
