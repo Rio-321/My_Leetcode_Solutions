@@ -5,30 +5,15 @@ public:
         int n = height.size();
         
         int res = 0;
-        for(int i=1;i<n;i++)
+        int l=0,r=n-1;
+        while(l<r)
         {
-            for(int j=0;j<i;j++)
-            {
-                if(height[j]>=height[i])
-                {
-                    res = max(res, height[i]*(i-j));
-                    break;
-                }
-            }
+            res = max(res,(r-l)*min(height[l],height[r]));
             
-            // cout<<res<<" ";
-        }
-        
-        for(int i=n-2;i>=0;i--)
-        {
-            for(int j=n-1;j>i;j--)
-            {
-                if(height[j]>=height[i])
-                {
-                    res = max(res, height[i]*(j-i));
-                    break;
-                }
-            }
+            if(height[l]<height[r])
+                l++;
+            else
+                r--;
         }
         
         return res;
