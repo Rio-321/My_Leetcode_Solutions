@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    //Optimized Solution
      vector<vector<string>> ans;
     
      bool is_safe(vector<string> &board, int row, int col,int n)
@@ -41,29 +43,17 @@ public:
                 
                  Solve_Queen(board,col+1,n);
 
-                    board[i][col] = '.';
+                 board[i][col] = '.';
             }
         }
         
-        // return false;
         return;
     }
     
     
     vector<vector<string>> solveNQueens(int n) {
         
-        string temp = "";
-        for(int i=0;i<n;i++)
-            temp.push_back('.');
-        
-        vector<string> board(n,temp);
-
-        // for(int i=0;i<n;i++)
-        // {
-        //     for(int j=0;j<n;j++)
-        //         cout<<board[i][j];
-        //     cout<<"\n";
-        // }
+        vector<string> board(n,string(n,'.'));
         
         
         Solve_Queen(board,0,n);
