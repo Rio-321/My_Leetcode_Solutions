@@ -15,12 +15,15 @@ public:
                 int y = j+j_move[k];
                 if(x>=0 && x<m && y>=0 && y<n)
                 {
-                    if(board[x][y]==1)
-                        ans[i][j]++;
+                    // if(board[x][y]==1)
+                    //     ans[i][j]++;
+                    
+                    ans[i][j] += (board[x][y] & 1);
                         
                      
-                    if(board[i][j]==1)
-                          ans[x][y]++;    
+                    // if(board[i][j]==1)
+                    //       ans[x][y]++;
+                    ans[x][y] += (board[i][j] & 1);
                 }
                     
             }
