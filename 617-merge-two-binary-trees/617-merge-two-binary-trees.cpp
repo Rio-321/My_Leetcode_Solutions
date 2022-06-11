@@ -20,17 +20,11 @@ public:
         if(root2==NULL)
             return root1;
         
-        if(root1==NULL)
-        {
-            // if(left==1)
-                // root1 = root2;
-            // else
-            //     prev1->right = root2;
-            
+        if(root1==NULL)            
             return root2;
-        }
         
-        if(root1!=NULL && root2!=NULL)
+        
+        // if(root1!=NULL && root2!=NULL)
             root1->val = root1->val + root2->val;
         
         root1->left = Merge_Tree(root1->left,root1, root2->left,1);
