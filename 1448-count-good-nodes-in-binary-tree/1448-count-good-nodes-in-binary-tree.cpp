@@ -17,13 +17,10 @@ public:
         if(root==NULL)
             return 0;
         
-        int count = 0;
-        if(maxTill <= root->val)
-            count = 1;
-        
-        maxTill = max(maxTill, root->val);
-        return goodNodes(root->left,maxTill) + goodNodes(root->right, maxTill) + count;
+         maxTill = max(maxTill, root->val);
+        return goodNodes(root->left,maxTill) + goodNodes(root->right, maxTill) + (maxTill <= root->val);
     }
+    
     
     int goodNodes(TreeNode* root) {
         
