@@ -12,7 +12,7 @@
 class Solution {
 public:
     
-    TreeNode* Merge_Tree(TreeNode* root1, TreeNode* prev1, TreeNode* root2,int left)
+    TreeNode* Merge_Tree(TreeNode* root1, TreeNode* root2)
     {
         if(root1==NULL && root2==NULL)
             return root1;
@@ -23,20 +23,18 @@ public:
         if(root1==NULL)            
             return root2;
         
+        root1->val = root1->val + root2->val;
         
-        // if(root1!=NULL && root2!=NULL)
-            root1->val = root1->val + root2->val;
-        
-        root1->left = Merge_Tree(root1->left,root1, root2->left,1);
-        root1->right = Merge_Tree(root1->right,root1,root2->right,0);
+        root1->left = Merge_Tree(root1->left, root2->left);
+        root1->right = Merge_Tree(root1->right,root2->right);
         
         return root1;
         
     }
     TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
         
-        TreeNode* prev1 = NULL;
-        TreeNode* temp = Merge_Tree(root1,prev1,root2,1);
+        // TreeNode* prev1 = NULL;
+        TreeNode* temp = Merge_Tree(root1,root2);
         
         return temp;
         
