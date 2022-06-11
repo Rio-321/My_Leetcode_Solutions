@@ -1,61 +1,38 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
+    vector<TreeNode*> nodes;
+
 public:
-    
-    bool is_subtree(TreeNode *temp, TreeNode* subRoot)
-    {  
-        if((temp==NULL && subRoot!=NULL)  || (temp!=NULL  && subRoot==NULL))
-            return false;
-        
-        if(temp==NULL && subRoot==NULL) return true;
-        
-        if(temp->val==subRoot->val && is_subtree(temp->left, subRoot->left) && is_subtree(temp->right, subRoot->right))
-            return true;
-        else
-            return false;
+    bool isSubtree(TreeNode* s, TreeNode* t) {
+        if (!s && !t) return true;
+        if (!s || !t) return false;
+
+        getDepth(s, getDepth(t, -1));
+
+        for (TreeNode* n: nodes)
+            if (identical(n, t))
+                return true;
+
+        return false;
     }
-    
-    void find_node(TreeNode* root, TreeNode* subRoot,vector<TreeNode*> &same_vertex)
-    {
-        if(root==NULL) return;
-        
-        if(root->val==subRoot->val)
-            same_vertex.push_back(root);
-        
-        find_node(root->left,subRoot,same_vertex);
-        find_node(root->right,subRoot,same_vertex);
-        
+
+    int getDepth(TreeNode* r, int d) {
+        if (!r)
+            return -1;
+
+        int depth = max(getDepth(r->left, d), getDepth(r->right, d)) + 1;
+
+        // Check if depth equals required value
+        // Require depth is -1 for tree t (only return the depth, no push)
+        if (depth == d)
+            nodes.push_back(r);
+
+        return depth;
     }
-    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        
-        vector<TreeNode*> same_vertex;
-        find_node(root,subRoot,same_vertex);
-            
-        // if(temp==NULL) cout<<"NULL";
-        // else cout<<temp->val;
-        
-        // if() return false;
-        
-        for(auto temp:same_vertex)
-            cout<<temp->val<<" ";
-        
-        for(auto temp:same_vertex)
-        {
-             if(is_subtree(temp,subRoot))
-                 return true;
-        }
-        
-            return false;
-        
- }
+
+    bool identical(TreeNode* a, TreeNode* b) {
+        if (!a && !b) return true;
+        if (!a || !b || a->val != b->val) return false;
+
+        return identical(a->left, b->left) && identical(a->right, b->right);
+    }
 };
