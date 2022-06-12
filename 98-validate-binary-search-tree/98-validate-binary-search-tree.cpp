@@ -12,29 +12,38 @@
 class Solution {
 public:
     
-    //My Solution
+    //small Optimization
     TreeNode *prev = NULL;
+    bool isValid = true;
     
     
-    bool Inorder(TreeNode* root)
+    void Inorder(TreeNode* root)
     {
-        if(root==NULL) return true;
+        if(root==NULL) return;
         
-        if(!Inorder(root->left))
-            return false;
+        if(!isValid) return;
+        
+        if(isValid)
+              Inorder(root->left);
+
         
         if(prev!=NULL && prev->val >= root->val) 
-                return false;
+        {
+            isValid = false;
+            return ;
+        }
+                
         
         prev = root;
-        if(!Inorder(root->right))
-            return false;
         
-        return true;
+        if(isValid)
+            Inorder(root->right);
+           
     }
 
     bool isValidBST(TreeNode* root) {
         
-       return Inorder(root);
+       Inorder(root);
+        return isValid;
     }
 };
