@@ -12,34 +12,46 @@
 class Solution {
 public:
     
-    // A Bit optimized than previous
-    vector<int> nodes;
-    int index=0;
-    void Inorder(TreeNode* root, int flag, int &index)
+    TreeNode* prev,*first,*middle,*last;
+    
+
+    void Inorder(TreeNode* root)
     {
         if(root==NULL) return;
         
-        Inorder(root->left,flag,index);
+        Inorder(root->left);
        
-        if(flag==1)
+        if(prev!=NULL && prev->val > root->val)
         {
-               root->val = nodes[index];
-               index++;                
+            if(first==NULL)
+            {
+                first = prev;
+                middle = root;
+            }
+            else
+            {
+                last = root;
+            }
+             
         }
-        else
-             nodes.push_back(root->val);
+    
+        prev = root;
         
-        Inorder(root->right,flag,index);
+        Inorder(root->right);
     }
 
+    
     void recoverTree(TreeNode* root) {
         
-        int index = 0;
-        Inorder(root,0,index);
+        first = middle = last = NULL;
+        prev = new TreeNode(INT_MIN);
+
+        Inorder(root);
         
-        sort(nodes.begin(), nodes.end());
-        
-        Inorder(root,1,index);
+        if(first && last)
+            swap(first->val,last->val);
+        else if(first && middle)
+            swap(first->val, middle->val);
            
     }
 };
