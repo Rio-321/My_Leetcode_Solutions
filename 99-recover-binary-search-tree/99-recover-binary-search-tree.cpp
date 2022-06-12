@@ -11,53 +11,65 @@
  */
 class Solution {
 public:
-    vector<TreeNode*> nodes;
-    void Inorder(TreeNode* root)
+    vector<int> nodes;
+    int index=0;
+    void Inorder(TreeNode* root, int flag, int &index)
     {
         if(root==NULL) return;
         
-        Inorder(root->left);
-        nodes.push_back(root);
-        Inorder(root->right);
+        Inorder(root->left,flag,index);
+       
+        if(flag==1)
+        {
+            // if(root->val!=nodes[index])
+            // {
+               root->val = nodes[index];
+               index++;
+            
+                
+        }
+        else
+             nodes.push_back(root->val);
+        
+        Inorder(root->right,flag,index);
     }
 
     void recoverTree(TreeNode* root) {
         
-        Inorder(root);
+        int index = 0;
+        Inorder(root,0,index);
         
-        TreeNode* one = NULL;
+        sort(nodes.begin(), nodes.end());
         
-        // for(auto x:nodes)
-        //     cout<<x->val<<" ";
+        Inorder(root,1,index);
         
-        // cout<<"\n";
+//         TreeNode* one = NULL;
+      
+//         int i=0;
         
-        int i=0;
+//         for(i=0;i<nodes.size()-1;i++)
+//         {
+//             if(nodes[i]->val > nodes[i+1]->val)
+//             {
+//                 one = nodes[i];
+//                 break;
+//             }
+//         }
         
-        for(i=0;i<nodes.size()-1;i++)
-        {
-            if(nodes[i]->val > nodes[i+1]->val)
-            {
-                one = nodes[i];
-                break;
-            }
-        }
-        i++;
+//         // cout<<one->val<<"\n";
+//         i = nodes.size()-1;
+//         for(;i>=1;i--)
+//         {
+//             if(nodes[i-1]->val > nodes[i]->val)
+//             {
+//                 break;
+//             }
+//         }
+//         // cout<<nodes[i]->val;
         
-        // cout<<one->val<<"\n";
-        i = nodes.size()-1;
-        for(;i>=1;i--)
-        {
-            if(nodes[i-1]->val > nodes[i]->val)
-            {
-                break;
-            }
-        }
-        // cout<<nodes[i]->val;
-        
-        int temp = one->val;
-        one->val = nodes[i]->val;
-        nodes[i]->val = temp;
+//         int temp = one->val;
+//         one->val = nodes[i]->val;
+//         nodes[i]->val = temp;
         
         
         
