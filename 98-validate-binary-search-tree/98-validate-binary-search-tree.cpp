@@ -12,7 +12,9 @@
 class Solution {
 public:
     
+    //My Solution
     TreeNode *prev = NULL;
+    
     
     bool Inorder(TreeNode* root)
     {
