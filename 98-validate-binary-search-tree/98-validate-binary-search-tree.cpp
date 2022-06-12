@@ -21,11 +21,8 @@ public:
         if(!Inorder(root->left))
             return false;
         
-        if(prev!=NULL)
-        {
-            if(prev->val >= root->val)
+        if(prev!=NULL && prev->val >= root->val) 
                 return false;
-        }
         
         prev = root;
         if(!Inorder(root->right))
