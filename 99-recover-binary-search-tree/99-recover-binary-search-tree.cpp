@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    
+    // A Bit optimized than previous
     vector<int> nodes;
     int index=0;
     void Inorder(TreeNode* root, int flag, int &index)
@@ -21,12 +23,8 @@ public:
        
         if(flag==1)
         {
-            // if(root->val!=nodes[index])
-            // {
                root->val = nodes[index];
-               index++;
-            
-                
+               index++;                
         }
         else
              nodes.push_back(root->val);
@@ -42,40 +40,9 @@ public:
         sort(nodes.begin(), nodes.end());
         
         Inorder(root,1,index);
-        
-//         TreeNode* one = NULL;
-      
-//         int i=0;
-        
-//         for(i=0;i<nodes.size()-1;i++)
-//         {
-//             if(nodes[i]->val > nodes[i+1]->val)
-//             {
-//                 one = nodes[i];
-//                 break;
-//             }
-//         }
-        
-//         // cout<<one->val<<"\n";
-//         i = nodes.size()-1;
-//         for(;i>=1;i--)
-//         {
-//             if(nodes[i-1]->val > nodes[i]->val)
-//             {
-//                 break;
-//             }
-//         }
-//         // cout<<nodes[i]->val;
-        
-//         int temp = one->val;
-//         one->val = nodes[i]->val;
-//         nodes[i]->val = temp;
-        
-        
-        
-        // cout<<"\n\n"<<temp;
-        
-        
            
     }
 };
+
+
+// 1st solution - https://leetcode.com/submissions/detail/720401862/
