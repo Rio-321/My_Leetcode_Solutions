@@ -21,7 +21,7 @@ public:
     {
         if(root==NULL) return;
         
-        if(!isValid) return;
+        // if(!isValid) return;
         
         if(isValid)
               Inorder(root->left);
