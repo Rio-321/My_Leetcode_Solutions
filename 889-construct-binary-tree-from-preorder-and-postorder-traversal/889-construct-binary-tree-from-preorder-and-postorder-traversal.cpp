@@ -12,6 +12,8 @@
 class Solution {
 public:
     
+    // MY Solution
+    
     TreeNode* func(int i,int left, int right,vector<int> &preorder, vector<int> &postorder)
     {
         // int i=0;
@@ -64,7 +66,10 @@ public:
         int n = preorder.size();
         return func(0,0,n-1,preorder,postorder);
         
-       
         
     }
 };
+
+
+
+// https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/discuss/821268/C-Construct-tree-using-preorder-traversal-first
