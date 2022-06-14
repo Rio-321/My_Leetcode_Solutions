@@ -12,61 +12,21 @@
 class Solution {
 public:
     
-    // MY Solution
+    // Optimal Solution
     
-    TreeNode* func(int i,int left, int right,vector<int> &preorder, vector<int> &postorder)
-    {
-        // int i=0;
-        
-        if(i>=preorder.size() || left>right) return NULL;
-        
-        
-        TreeNode* root = new TreeNode(preorder[i]);
-        i++;
-        
-        
-        int ind1;
-        if(i>=preorder.size())
-        {
-            root->left = NULL;
-        }
-        else
-        {   
-            for(int k=left;k<=right;k++)
-            {
-                if(postorder[k] == preorder[i])
-                {
-                    root->left = func(i,left,k,preorder,postorder);
-                    ind1 = k;
-                    break;
-                }
-            }
-        }
-        
-        
-        if(right==0)
-        {
-            root->right = NULL;
-        }
-        else
-        {
-            for(int k=i;k<preorder.size();k++)
-            {
-                if(preorder[k]==postorder[right-1])
-                {
-                   root->right = func(k,ind1+1,right-1,preorder,postorder); 
-                }
-            }
-        }
-        return root;   
-    }
+    int preindex = 0, postindex = 0;
+    
     TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
         
+        TreeNode* root = new TreeNode(preorder[preindex++]);
         
-        int n = preorder.size();
-        return func(0,0,n-1,preorder,postorder);
+        if(root->val != postorder[postindex])
+            root->left = constructFromPrePost(preorder,postorder);
+        if(root->val != postorder[postindex])
+            root->right = constructFromPrePost(preorder,postorder);
+        postindex++;
         
-        
+        return root;
     }
 };
 
