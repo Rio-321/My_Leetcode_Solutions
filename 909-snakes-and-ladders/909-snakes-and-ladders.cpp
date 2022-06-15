@@ -17,12 +17,12 @@ public:
             int curr = q.front();
             q.pop();
             
-            cout<<curr<<" ";
+            // cout<<curr<<" ";
             if(curr==0)
             {
                 q.push(0);
                 ans++;
-                cout<<"\n";
+                // cout<<"\n";
                 continue;
             }
             
@@ -34,27 +34,15 @@ public:
                 int next = curr+i;
                 if(path.find(next)!=path.end())
                 {
-                    if(path[next]<next)
+                    if(path[next]<next && !visited[path[next]])
                     {
-                       if(!visited[path[next]])
-                       {
                            visited[path[next]] = true;
                            q.push(path[next]);
-                       }
-                        else
-                        {
-                            continue;
-                        }
                     }
-                    else if(path[next]>next)
+                    else if(path[next]>next && !visited[path[next]])
                     {
-                        if(!visited[path[next]])
-                        {
                             visited[path[next]] = true;
                             q.push(path[next]);
-                        }  
-                        else
-                            continue;
                     }
 
                 }
@@ -68,8 +56,7 @@ public:
                 }
 
             }
-                 
-             
+                    
                 
         }
         
@@ -88,6 +75,7 @@ public:
         
         int num  = 1;   
         int flag = 0;
+        
         for(int i=n-1;i>=0;i--)
         {    
             flag = flag ^ 1;
@@ -97,7 +85,6 @@ public:
                 { 
                     if(board[i][j]!=-1)
                         path[num] = board[i][j];
-                    // cout<<num<<" ";
                     num++;
                 }
                     
@@ -108,17 +95,12 @@ public:
                 {
                     if(board[i][j]!=-1)
                         path[num] = board[i][j];
-                    // cout<<num<<" ";
-                    num++;
+                        num++;
                 }
                     
             }
-            // cout<<"\n";
         }
-        
-        
-        for(auto x:path)
-            cout<<x.first<<" - "<<x.second<<"\n";
+
         
         return No_Of_Moves(1,n*n,path,n);
 
