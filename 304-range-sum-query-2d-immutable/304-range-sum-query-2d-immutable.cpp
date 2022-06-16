@@ -1,27 +1,28 @@
-    int N = 200;
-    vector<vector<int>> Board( N, vector<int>(N, 0));
 class NumMatrix {
 public:
-
+    
+    int rows,col;
+    vector<vector<int>> Board;
     
     NumMatrix(vector<vector<int>>& matrix) {
-        // Board = matrix;
         
-        for(int i=0;i<matrix.size();i++)
+        int row = matrix.size();
+        int col = row>0 ? matrix[0].size() : 0;
+        
+        Board = vector<vector<int>>(row+1,vector<int>(col+1,0));
+        
+        for(int i=1;i<=row;i++)
         {
-            for(int j=0;j<matrix[0].size();j++)
-            Board[i][j] = ((j>0) ? Board[i][j-1] : 0) + matrix[i][j];
+            for(int j=1;j<=col;j++)
+            {
+                Board[i][j] = matrix[i-1][j-1] +  Board[i-1][j] + Board[i][j-1]  - Board[i-1][j-1];
+            }
         }
     }
     
     int sumRegion(int row1, int col1, int row2, int col2) {
-        int res = 0;
-        
-        for(int i=row1;i<=row2;i++)
-        {
-            res = res + Board[i][col2] - ((col1>0) ? Board[i][col1-1] : 0);
-        }
-
+       
+        int res = Board[row2+1][col2+1] - Board[row2+1][col1] - Board[row1][col2+1] + Board[row1][col1]; 
         return res;
     }
 };
