@@ -8,7 +8,6 @@ public:
         char sign = '+';
         int curr = 0;
         
-        cout<<s<<"\n";
         
         for(auto c:s)
         {  
