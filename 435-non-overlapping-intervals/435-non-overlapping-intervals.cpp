@@ -2,6 +2,7 @@
 class Solution {
 public:
     
+    // by sorting according to first element
     int eraseOverlapIntervals(vector<vector<int>>& intervals) 
     {
         if(intervals.size()==0) return 0;
@@ -27,24 +28,3 @@ public:
         return count;
     }
 };
-
-
-
-
-
-
-
-
-
-     // int prevLen = intervals[prev][1] - intervals[prev][0] + 1;
-//                 int currLen = intervals[i][1] - intervals[i][0] + 1;
-                
-//                 if(prevLen > currLen)
-//                 {
-//                     count++;
-//                     prev = i;
-//                 }
-//                 else if(prevLen <= currLen)
-//                 {
-//                     count++;
-//                 }
