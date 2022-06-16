@@ -2,7 +2,7 @@ class Solution {
 public:
     int calculate(string s) {
             
-        s = s + "+0+0";
+        s = s + "+";
         int res = 0;
         int prev = 0;
         char sign = '+';
