@@ -1,67 +1,61 @@
 class Solution {
 public:
     int calculate(string s) {
-        
-        if(s.length()==0) return 0;
-        char oper = '+';
-        stack<int> st;
-        int curr;
+            
+        s = s + "+0+0";
         int res = 0;
+        int prev = 0;
+        char sign = '+';
+        int curr = 0;
         
-        int i=0;
-        while(i<s.length())
+        cout<<s<<"\n";
+        
+        for(auto c:s)
         {  
-            int num = 0;
-            if(isdigit(s[i]))
+             if(c==' ') continue;
+          
+            if(isdigit(c))
             {
-                while(i<s.length() && isdigit(s[i]))
-                {
-                    num = num*10 + (s[i]-'0');
-                    i++;
-                }
-                
-                if(oper=='*')
-                {
-                    curr = st.top()*num;
-                    st.pop();
-                    st.push(curr);
-                }
-                else if(oper=='/')
-                {
-                    curr = st.top()/num;
-                    st.pop();
-                    st.push(curr);
-                }
-                else if(oper=='-')
-                {
-                    st.push(-num);
-                }
-                else
-                    st.push(num);
-                
-                cout<<num<<"\n";
+                curr = curr*10 + (c-'0');
             }
-           
             else
             {
-                if(s[i]=='+' || s[i]=='/' || s[i]=='*' || s[i]=='-')
-                    oper = s[i];
-                
-               i++; 
+                if(sign=='*')
+                {
+                    prev = prev*curr;
+                    curr=0;
+                    sign = c;
+                }
+                else if(sign=='/')
+                {
+                    prev = prev/curr;
+                    curr=0;
+                    sign = c;
+                }
+                else 
+                {
+                    if(sign=='-')
+                    {
+                       res =  res + prev;
+                        prev = -curr;
+                    } 
+                    else if(sign=='+')
+                    {
+                        res = res + prev;
+                        prev = curr;
+                    }
+
+                    curr = 0;
+                    sign = c;
+                }
             }
-                
         }
         
-        
-        while(!st.empty())
-        {
-            res =  res + st.top();
-            st.pop();
-        }
-        
+        res = res + prev;
         
         return res;
         
-        
     }
+    
+    // https://leetcode.com/problems/basic-calculator-ii/discuss/1646099/C%2B%2BPython-Simple-Solutions-w-Explanation-or-Postfix-%2B-Stack-%2B-Without-Stack
 };
