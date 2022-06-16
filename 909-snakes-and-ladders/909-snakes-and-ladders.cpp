@@ -1,6 +1,7 @@
 class Solution {
 public:
     
+    // MY Solution
     int No_Of_Moves(int curr, int dest, unordered_map<int,int> path, int n)
     {  
         queue<int> q;
@@ -105,4 +106,8 @@ public:
         return No_Of_Moves(1,n*n,path,n);
 
     }
+    
+    // https://leetcode.com/problems/snakes-and-ladders/discuss/173378/Diagram-and-BFS
+// see comment from shenglia
 };
+
