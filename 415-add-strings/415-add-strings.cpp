@@ -10,7 +10,7 @@ public:
         
         while(i>=0 || j>=0 || rem==1)
         {  
-            // cout<<num1[i]<<" ";
+
             n = 0;
             if(i>=0)
             {
@@ -24,9 +24,6 @@ public:
             }
             
             n = n + rem;
-            // n = (num1[i]-'0') + (num2[j]-'0') + (rem);
-            
-            // cout<<n<<"\n";
             
             rem =  n/10;
             n = n%10;
@@ -34,28 +31,6 @@ public:
             temp += char(n+'0');
         }
         
-//         while(i>=0)
-//         {
-//             n = (num1[i]-'0') + rem;
-//             rem = n/10;
-//             n = n%10;
-//             temp += char(n+'0');
-            
-//             i--;
-//         }
-        
-//         while(j>=0)
-//         {
-//             n = (num2[j]-'0') + rem;
-//             rem =  n/10;
-//             n = n%10;
-            
-//             temp += char(n+'0');
-//             j--;
-//         }
-        
-        // if(rem==1)
-        //     temp += '1';
         
         reverse(temp.begin(), temp.end());
         return temp;
