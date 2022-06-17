@@ -31,7 +31,7 @@ public:
         q.push(root);
         q.push(NULL);
         
-        Node* prev = NULL;
+        // Node* prev = NULL;
         
         while(q.size()>1)
         {
@@ -40,24 +40,25 @@ public:
             
             if(curr==NULL)
             {
-                prev = curr;
+                // prev = curr;
                 q.push(NULL);
                 continue;
                 
             }
             
-            if(prev!=NULL)
-            {
-                prev->next = curr;
-            }
+            // if(prev!=NULL)
+            // {
+            //     prev->next = curr;
+            // }
             
+            curr->next = q.front();
             if(curr->left!=NULL)
                 q.push(curr->left);
             
             if(curr->right!=NULL)
                 q.push(curr->right);
             
-            prev = curr;
+            // prev = curr;
               
         }
         
