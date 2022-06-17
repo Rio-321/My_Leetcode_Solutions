@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    // MY SOLUTION
     int getSum(int a, int b) {
         
         string res = "";
@@ -7,10 +9,8 @@ public:
         
         for(int i=0;i<32;i++)
         {  
-            // cout<<(a>>i)<<" and "<<(b>>i)<<" ";
             if(((a>>i & 1) & (b>>i & 1))==1)
             {   
-                // cout<<"1 ";
                 if(rem==1)
                 {
                     res.push_back('1');
@@ -24,7 +24,6 @@ public:
             }
             else if(((a>>i & 1)|(b>>i & 1))==1)
             {
-                // cout<<"2 ";
                 
                 if(rem==1)
                 {
@@ -39,7 +38,6 @@ public:
             }
             else if(((a>>i & 1)|(b>>i & 1))==0)
             {
-                // cout<<"3 ";
                 if(rem == 1)
                 {
                     res.push_back('1');
@@ -52,11 +50,10 @@ public:
                 }
             }
             
-            // cout<<"\n";
+
             
         }
         
-        // cout<<res;
         
         int pow = 1;
         int ans = 0;
