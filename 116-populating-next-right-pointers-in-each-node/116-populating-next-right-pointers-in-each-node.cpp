@@ -16,6 +16,11 @@ public:
 };
 */
 
+
+// MY SOLUTION
+// Time - theta(n);
+// Space - O(n) or O(width of tree);
+
 class Solution {
 public:
     Node* connect(Node* root) {
@@ -40,7 +45,6 @@ public:
                 continue;
                 
             }
-            // cout<<curr->val<<" ";
             
             if(prev!=NULL)
             {
