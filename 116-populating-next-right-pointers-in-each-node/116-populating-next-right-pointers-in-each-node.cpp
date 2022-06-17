@@ -31,7 +31,6 @@ public:
         q.push(root);
         q.push(NULL);
         
-        // Node* prev = NULL;
         
         while(q.size()>1)
         {
@@ -40,16 +39,10 @@ public:
             
             if(curr==NULL)
             {
-                // prev = curr;
                 q.push(NULL);
                 continue;
                 
             }
-            
-            // if(prev!=NULL)
-            // {
-            //     prev->next = curr;
-            // }
             
             curr->next = q.front();
             if(curr->left!=NULL)
@@ -57,13 +50,12 @@ public:
             
             if(curr->right!=NULL)
                 q.push(curr->right);
-            
-            // prev = curr;
               
         }
         
-        
         return root;
+        
+        // see solution by sohammehta in comments -https://leetcode.com/problems/populating-next-right-pointers-in-each-node/discuss/37503/C%2B%2B-IterativeRecursive
         
     }
 };
