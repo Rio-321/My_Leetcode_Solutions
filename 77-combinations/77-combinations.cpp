@@ -7,10 +7,6 @@ public:
     {
         if(temp.size()==k)
         {
-            // for(int i=0;i<k;i++)
-            //     if(temp[i]==0)
-            //         return;
-            
             res.push_back(temp);
             return;
         }
@@ -27,7 +23,6 @@ public:
     vector<vector<int>> combine(int n, int k) {
         
         vector<int> temp;
-        int count = 0;
         combinations(1,n,k, temp);
         return res;
     }
