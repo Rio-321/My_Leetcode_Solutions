@@ -1,0 +1,3 @@
+```
+class Solution { public: vector<vector<int>> res; void combinations(int index, int n, int k, vector<int> &temp, int count) { if(count==k) { // for(int i=0;i<k;i++) //     if(temp[i]==0) //         return; res.push_back(temp); return; } for(int i=index;i<=n;i++) { for(int j=0;j<k;j++) { if(temp[j]==0) { temp[j] = i; combinations(i+1,n,k, temp,count+1); temp[j] = 0; } } } } vector<vector<int>> combine(int n, int k) { vector<int> temp(k,0); int count = 0; combinations(1,n,k, temp,count); return res; } };
+```
