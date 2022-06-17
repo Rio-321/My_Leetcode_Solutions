@@ -8,45 +8,54 @@ public:
         
         int i=num1.length()-1,j=num2.length()-1;
         
-        while(i>=0 && j>=0)
+        while(i>=0 || j>=0 || rem==1)
         {  
-            cout<<num1[i]<<" ";
+            // cout<<num1[i]<<" ";
+            n = 0;
+            if(i>=0)
+            {
+                n = n + (num1[i]-'0');
+                i--;
+            }
+            if(j>=0)
+            {
+                n = n +(num2[j]-'0');
+                j--;
+            }
             
-            n = (num1[i]-'0') + (num2[j]-'0') + (rem);
+            n = n + rem;
+            // n = (num1[i]-'0') + (num2[j]-'0') + (rem);
             
-            cout<<n<<"\n";
+            // cout<<n<<"\n";
             
             rem =  n/10;
             n = n%10;
             
             temp += char(n+'0');
-            
-            i--;
-            j--;
         }
         
-        while(i>=0)
-        {
-            n = (num1[i]-'0') + rem;
-            rem = n/10;
-            n = n%10;
-            temp += char(n+'0');
+//         while(i>=0)
+//         {
+//             n = (num1[i]-'0') + rem;
+//             rem = n/10;
+//             n = n%10;
+//             temp += char(n+'0');
             
-            i--;
-        }
+//             i--;
+//         }
         
-        while(j>=0)
-        {
-            n = (num2[j]-'0') + rem;
-            rem =  n/10;
-            n = n%10;
+//         while(j>=0)
+//         {
+//             n = (num2[j]-'0') + rem;
+//             rem =  n/10;
+//             n = n%10;
             
-            temp += char(n+'0');
-            j--;
-        }
+//             temp += char(n+'0');
+//             j--;
+//         }
         
-        if(rem==1)
-            temp += '1';
+        // if(rem==1)
+        //     temp += '1';
         
         reverse(temp.begin(), temp.end());
         return temp;
