@@ -1,4 +1,4 @@
-// MY SOLUTION
+// Another approach - not so fast
 
 class Solution {
 public:
