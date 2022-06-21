@@ -1,6 +1,8 @@
 class Solution {
 public:
     // https://leetcode.com/problems/reorganize-string/discuss/972856/C%2B%2B-Priority-Queue-Hash-Map-Easy-Solution
+    
+    // MY Solution
     string reorganizeString(string s) {
         
         
@@ -28,7 +30,6 @@ public:
         
         int l=0, r = (s.length()-1)/2+1;
         
-        // cout<<l<<" "<<r;
         
         while(l<=(s.length()-1)/2 || r<s.length())
         {
