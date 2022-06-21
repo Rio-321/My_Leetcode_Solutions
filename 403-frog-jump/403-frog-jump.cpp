@@ -1,6 +1,9 @@
+// MY SOLUTION
+
 class Solution {
 public:
     
+    // good solution - https://leetcode.com/problems/frog-jump/discuss/1672029/C%2B%2B-or-HashMap-or-Simple-solution-and-explanation
     bool DFS(int src, int k, int &target, map<int,int> &st, vector<vector<bool>> &dp)
     {
        
