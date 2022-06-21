@@ -4,47 +4,36 @@ class Solution {
 public:
     
     // good solution - https://leetcode.com/problems/frog-jump/discuss/1672029/C%2B%2B-or-HashMap-or-Simple-solution-and-explanation
-    bool DFS(int src, int k, int &target, map<int,int> &st, vector<vector<bool>> &dp)
+    
+    
+bool canCross(vector<int>& stones) {
+        
+    int n = stones.size();
+    map<int, set<int>> mp;
+    
+    mp[stones[0]+1].insert(1);
+    
+    for(int i=1;i<n;i++)
     {
-       
-        if(dp[k][st[src]])
-            return false;
+        if( mp.find(stones[i]) != mp.end())
+        {
+            
+            int pos = stones[i];
+            for(auto x: mp[pos])
+            {
+                mp[pos + x].insert(x);
+                mp[pos + x + 1].insert(x + 1);
+                mp[pos + x -1].insert(x - 1);
+            }
+            
+        }
         
-    if(src + k == target || src + k + 1 == target || src + k - 1 == target)
-            return true;
-        
-        dp[k][st[src]] = true;
-        
-        if(src + k < target && st.find(src + k) != st.end())
-            if(DFS(src + k, k, target, st, dp))
-                return true;
-        
-        if(src + k + 1 < target && st.find(src + k + 1) != st.end())
-            if(DFS(src + k + 1, k + 1, target, st, dp))
-                return true;
-        
-        if(src + k - 1 < target && st.find(src + k - 1) != st.end() && k!=1)
-            if(DFS(src + k - 1, k - 1, target, st, dp))
-                return true;
-        
-        
-        return false;
     }
     
-    
-    bool canCross(vector<int>& stones) {
-        
-        int n = stones.size();
-        map<int,int> st;
-        for(int i=0;i<stones.size();i++)
-            st[stones[i]] = i;
-        
-        int target = stones[stones.size()-1];
-        // return true;
-        
-        vector<vector<bool>> dp(n+2, vector<bool>(n));
-        
-        if(stones[1] - stones[0] != 1) return false;
-       return DFS(stones[1], 1,target,st,dp);
+    if(mp.find(stones[n-1]) != mp.end())
+        return true;
+    else
+        return false;
+     
     }
 };
