@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // https://leetcode.com/problems/reorganize-string/discuss/972856/C%2B%2B-Priority-Queue-Hash-Map-Easy-Solution
     string reorganizeString(string s) {
         
         
@@ -12,7 +13,7 @@ public:
         
         
         for(auto m:mp)
-            pq.push({m.second, m.first});
+            pq.push({m.second, m.first});  //N(log(N))
         
         while(pq.size()>1)
         {
