@@ -1,10 +1,11 @@
+// ----------------------------------Optimal Solution---------------->
+// link - https://leetcode.com/problems/reorganize-string/discuss/972856/C%2B%2B-Priority-Queue-Hash-Map-Easy-Solution
+
+
 class Solution {
 public:
-    // https://leetcode.com/problems/reorganize-string/discuss/972856/C%2B%2B-Priority-Queue-Hash-Map-Easy-Solution
-    
-    // MY Solution
+
     string reorganizeString(string s) {
-        
         
         string res = "";
         unordered_map<char,int> mp;
@@ -17,38 +18,36 @@ public:
         for(auto m:mp)
             pq.push({m.second, m.first});  //N(log(N))
         
-        s.erase(s.begin(), s.end());
-        
-        while(!pq.empty())
+        while(pq.size()>1)
         {
-            s = s + string(pq.top().first, pq.top().second);
+            auto top1 = pq.top();
             pq.pop();
+            auto top2 = pq.top();
+            pq.pop();
+            
+            res = res + top1.second + top2.second;
+            
+            top1.first--;
+            top2.first--;
+            
+            if(top2.first>0)
+                pq.push({top2.first, top2.second});
+            
+            if(top1.first>0)
+                pq.push({top1.first, top1.second});
         }
         
         
-        string temp = "";
-        
-        int l=0, r = (s.length()-1)/2+1;
-        
-        
-        while(l<=(s.length()-1)/2 || r<s.length())
+        if(!pq.empty())
         {
-            
-            if(s[l]==s[r]) return "";
-            
-            temp = temp +  s[l] ;
-            
-            if(r<s.length())
-            temp = temp + s[r];
-            l++;
-            r++;
+             if(pq.top().first>1)
+                return "";
+            else
+                 res = res + pq.top().second;
         }
+       
         
-        // if(l==r)
-        //     temp += s[l];
-        
-        
-        return temp;
+        return res;
             
         
     }
