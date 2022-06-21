@@ -15,36 +15,39 @@ public:
         for(auto m:mp)
             pq.push({m.second, m.first});  //N(log(N))
         
-        while(pq.size()>1)
+        s.erase(s.begin(), s.end());
+        
+        while(!pq.empty())
         {
-            auto top1 = pq.top();
+            s = s + string(pq.top().first, pq.top().second);
             pq.pop();
-            auto top2 = pq.top();
-            pq.pop();
-            
-            res = res + top1.second + top2.second;
-            
-            top1.first--;
-            top2.first--;
-            
-            if(top2.first>0)
-                pq.push({top2.first, top2.second});
-            
-            if(top1.first>0)
-                pq.push({top1.first, top1.second});
         }
         
         
-        if(!pq.empty())
-        {
-             if(pq.top().first>1)
-                return "";
-            else
-                 res = res + pq.top().second;
-        }
-       
+        string temp = "";
         
-        return res;
+        int l=0, r = (s.length()-1)/2+1;
+        
+        // cout<<l<<" "<<r;
+        
+        while(l<=(s.length()-1)/2 || r<s.length())
+        {
+            
+            if(s[l]==s[r]) return "";
+            
+            temp = temp +  s[l] ;
+            
+            if(r<s.length())
+            temp = temp + s[r];
+            l++;
+            r++;
+        }
+        
+        // if(l==r)
+        //     temp += s[l];
+        
+        
+        return temp;
             
         
     }
