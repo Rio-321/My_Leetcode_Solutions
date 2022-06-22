@@ -1,8 +1,10 @@
 class Solution {
 public:
+    
+    // MY SOLUTION
     vector<int> res;
     
-    void helper(int ind, string &s, map<string,int> freq, int len, int k)
+    void helper(int ind, string &s, unordered_map<string,int> freq, int len, int k)
     {
         
         int i = ind;
@@ -38,10 +40,11 @@ public:
         int i = 0;   
         
 
-        map<string, int> freq;
+        unordered_map<string, int> freq;
         
         for(auto str:words)
             freq[str]++;
+        
         
         
         for(int j=k-1;j<n;j++,i++)
