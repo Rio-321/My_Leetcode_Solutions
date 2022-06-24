@@ -3,61 +3,51 @@ public:
     
     // Sliding window solution
     // https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/722300/C%2B%2B-O(n)-Sliding-Window-Explanation-with-approach
-    int solve(string &s, int uniq, int k)
+    
+    // Recursion Solution
+    // https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-    characters/discuss/614714/C%2B%2B-Divide-and-Conquer-Solution-with-Explanation
+    
+    
+    // Below is recursion solution
+    
+    int solve(int start, int end, int k, string &s)
     {
-        int ans = 0;
+        vector<int> freq(128, 0);
         
-        vector<int> mp(128, 0);
-        int left = 0, right = 0;
-        int curr_uniq = 0;
-        int freq_item = 0;
-        
-        while(right < s.length())
+        for(int i=start; i<=end; i++)
         {
-            if(mp[s[right]] == 0) 
-                curr_uniq++;
-            
-            mp[s[right]]++;
-            
-            if(mp[s[right]] == k)
-                freq_item++;
-            
-            while(curr_uniq > uniq)
-            {
-                if(mp[s[left]] == k)
-                    freq_item--;
-                
-                mp[s[left]]--;
-                
-                if(mp[s[left]] == 0)
-                    curr_uniq--;
-                
-                left++;
-            }
-            
-            if(curr_uniq == freq_item)
-            ans = max(ans, right - left + 1);
-            
-            right++;
+            freq[s[i]]++;
         }
         
-        return ans;
+        bool flag = true;
+        
+        for(int i=start; i<=end; i++)
+        {
+            if(freq[s[i]] < k)
+                flag = false;
+        }
+        
+        if(flag == true)
+            return end - start + 1;
+        
+        for(int i=start; i<=end; i++)
+        {
+            if(freq[s[i]] > 0 && freq[s[i]] < k)
+            {
+                int left = solve(start, i-1, k, s);
+                int right = solve(i+1, end, k, s);
+                
+                return max(left, right);
+            }
+        }
+        
+        return end - start + 1;
         
     }
     
     
     int longestSubstring(string s, int k) {
         
-       
-        int res = 0;
-        
-        for(int i=1; i <= 26; i ++)
-        {
-            res = max(res, solve(s, i, k));
-            // cout<<res<<"\n";
-        }
-        
-        return res;
-            
+      return solve(0, s.length()-1, k, s);
     }
 };
