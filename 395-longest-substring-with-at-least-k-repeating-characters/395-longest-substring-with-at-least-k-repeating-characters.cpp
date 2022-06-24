@@ -1,6 +1,8 @@
 class Solution {
 public:
     
+    // Sliding window solution
+    // https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/722300/C%2B%2B-O(n)-Sliding-Window-Explanation-with-approach
     int solve(string &s, int uniq, int k)
     {
         int ans = 0;
