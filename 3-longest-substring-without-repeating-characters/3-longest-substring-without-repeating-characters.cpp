@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
     int lengthOfLongestSubstring(string s) {
         
         if(s.length() < 2)
@@ -18,9 +19,6 @@ public:
             
             while(count > 0)
             {
-                // if(count > res)
-                //      res = count;
-                
                 if(map[s[left]]-- > 1)
                     count--;
                 
