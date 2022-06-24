@@ -3,22 +3,22 @@ public:
     // https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
     
     
-    // My Solution
+    // Optimal Approach
     string minWindow(string s, string t) {
         
         int res = INT_MAX;
         
-        unordered_set<char> st(s.begin(), s.end());
+        int mp[128] = {0};
         
         string ans = "";
-        map<char, int> mp;
         for(char c:t)
             mp[c]++;
         
-        int count  = t.length();
-        // cout<<mp.size()<<" ";
         
-        int left = 0,right = 0;
+        int count  = t.length();
+       
+        
+        int left = 0,right = 0, head = 0;
         
         while(right < s.length())
         {     
@@ -32,7 +32,8 @@ public:
                 if(right - left + 1 < res)
                 {
                     res = right - left + 1;
-                    ans = s.substr(left, right - left + 1); 
+                    // ans = s.substr(left, right - left + 1);
+                    head = left;
                 }
                 
                 mp[s[left]]++;
@@ -44,15 +45,14 @@ public:
             }
             
             right++;
-                
-            // cout<<left<<" "<<right<<" "<<mp.size()<<"\n";
            
         }
         
-        // cout<<res;
         
-        
-        return ans;
+        if(res == INT_MAX)
+            return "";
+        else
+            return s.substr(head, res);
         
     }
 };
