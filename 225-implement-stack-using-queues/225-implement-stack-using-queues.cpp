@@ -1,8 +1,8 @@
 class MyStack {
 public:
     
-    // using two queues
-    queue<int> q1,q2;
+    // using one queues
+    queue<int> q1;
     int top_elem;
     MyStack() {
         
@@ -30,20 +30,8 @@ public:
                 top_elem = curr;
         }
         
-//         while(q1.size() > 1)
-//         {
-//             int curr = q1.front();
-//             q1.pop();
-            
-//             q2.push(curr);
-            
-//             if(q1.size() == 1)
-//                 top_elem = curr;
-//         }
-        
         int last = q1.front();
         q1.pop();
-        // swap(q1, q2);
         return last;
     }
     
