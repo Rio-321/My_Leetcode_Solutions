@@ -2,6 +2,9 @@ class Solution {
 public:
     
     // My Approach
+    
+    // https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2193858/Easy-C%2B%2B-Sol-oror-Naive-greaterEfficient-Approaches-oror-Binary-Search
+    
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         
         int n1 = nums1.size();
