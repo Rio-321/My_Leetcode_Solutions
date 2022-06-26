@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    // Approach 1: Brute Force
+    // Approach 2: Optimised DP Solution
     
     int trap(vector<int>& height) {
         int n = height.size();
