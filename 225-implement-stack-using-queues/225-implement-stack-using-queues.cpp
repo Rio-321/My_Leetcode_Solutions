@@ -13,31 +13,24 @@ public:
     
     void push(int x) {
         top_elem = x;
+        int size = q1.size();
         q1.push(x);   
+        
+        while(size--)
+        {
+            q1.push(q1.front());
+            q1.pop();
+        }
     }
     
     int pop() {
-         
-        int n = q1.size();
-        n--;
-        
-        while(n--)
-        {
-            int curr = q1.front();
-            q1.pop();
-            
-            q1.push(curr);
-            
-            if(n == 0)
-                top_elem = curr;
-        }
-        
-        int last = q1.front();
-        q1.pop();
+       int last = q1.front();
+       q1.pop();
         return last;
     }
     
     int top() {
+        int top_elem = q1.front();
         return top_elem;
     }
     
