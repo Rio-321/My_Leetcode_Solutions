@@ -1,6 +1,7 @@
 class MyStack {
 public:
     
+    // using two queues
     queue<int> q1,q2;
     int top_elem;
     MyStack() {
