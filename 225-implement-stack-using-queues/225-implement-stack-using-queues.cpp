@@ -1,7 +1,9 @@
 class MyStack {
 public:
     
-    // using one queues
+    // using one queues My Approach
+    
+    // https://leetcode.com/problems/implement-stack-using-queues/discuss/2088290/With-Explanation-comments%3A-C%2B%2B-CPP-Time%3A-7-ms-(9.46)-Space%3A-6.9-MB-(55.40)
     queue<int> q1;
     int top_elem;
     MyStack() {
