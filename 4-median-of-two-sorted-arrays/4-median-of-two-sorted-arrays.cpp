@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    // My Approach
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         
         int n1 = nums1.size();
