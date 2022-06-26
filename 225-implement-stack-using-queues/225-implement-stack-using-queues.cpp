@@ -16,23 +16,34 @@ public:
     
     int pop() {
          
+        int n = q1.size();
+        n--;
         
-        while(q1.size() > 1)
+        while(n--)
         {
             int curr = q1.front();
             q1.pop();
             
-            q2.push(curr);
+            q1.push(curr);
             
-            if(q1.size() == 1)
+            if(n == 0)
                 top_elem = curr;
         }
         
+//         while(q1.size() > 1)
+//         {
+//             int curr = q1.front();
+//             q1.pop();
+            
+//             q2.push(curr);
+            
+//             if(q1.size() == 1)
+//                 top_elem = curr;
+//         }
+        
         int last = q1.front();
         q1.pop();
-        swap(q1, q2);
-        
-        
+        // swap(q1, q2);
         return last;
     }
     
