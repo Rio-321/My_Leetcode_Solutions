@@ -10,7 +10,9 @@ using namespace std;
 class Solution{
 public:
 
-    int Mchain(int i, int j, int arr[], vector<vector<int>> &dp)
+// Memoization solution
+
+    int Mchain(int i, int j, int *arr, vector<vector<int>> &dp)
     {
         if(dp[i][j] != -1)
             return dp[i][j];
