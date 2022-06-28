@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // https://leetcode.com/problems/basic-calculator/discuss/62344/Easy-18-lines-C%2B%2B-16-lines-Python
     
     int func(string &s, int &i)
     {
@@ -64,8 +65,10 @@ public:
         
         return res;       
     }
+    
 
-    int calculate(string s) {
+    int calculate(string s) 
+    {
         
         for(int j=0;j<s.length();j++)
             if(s[j] == ')')
