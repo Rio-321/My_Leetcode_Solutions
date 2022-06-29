@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    // My Solution
+    // My Solution  - Optimal Approach
     string convert(string s, int numRows) {
         
         if(numRows == 1) return s;
