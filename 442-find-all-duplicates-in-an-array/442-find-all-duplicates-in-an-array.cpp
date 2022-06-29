@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
         
-        // My solution
+        // BEST SOLUTION
         vector<int> res;
         
         for(int i=0;i<nums.size();i++)
