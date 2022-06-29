@@ -11,35 +11,29 @@ public:
         for(int j=0;j<numRows;j++)
         {
                 int i = j;
-                // cout<<j<<"\n";
+
                 while(i < s.length())
                 {
-                      // cout<<s[i]<<" "<<i<<"\n";
+
                     if(!visited[i])
                     {
                          visited[i] = true;
                          res.push_back(s[i]);
                     }
                    
+                    int next = i + 2*(numRows - 1 - j);
                     
-                    // i + 2*(numRows - 1 - j)
-                    
-                    if( (i + 2*(numRows - 1 - j)) < s.length() &&  !visited[i + 2*(numRows - 1 - j)])
+                    if( next < s.length() &&  !visited[next])
                     {
-                       // cout<<s[i+2*(numRows-1) - 2*j]<<" "<<i+2*(numRows-1) - 2*j<<"\n";
-                        visited[i + 2*(numRows - 1 - j)] = true;
-                        res.push_back(s[i + 2*(numRows - 1 - j)]);
+
+                        visited[next] = true;
+                        res.push_back(s[next]);
                     }
-                         
-                    
-                  
-                    
+                          
                     i = i+2*(numRows-1);
                 }
             
-            // cout<<"\n";
         }
-        
         
         
         return res;
