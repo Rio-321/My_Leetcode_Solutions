@@ -7,9 +7,9 @@ public:
         
         sort(nums.begin(), nums.end());
         
-        for(int i=0;i<nums.size();i++)
+        for(int i=0;i<nums.size()-1;i++)
         {
-            if(i < nums.size()-1 && nums[i] == nums[i+1])
+            if( nums[i] == nums[i+1])
                 res.push_back(nums[i]), i++;
         }
         
