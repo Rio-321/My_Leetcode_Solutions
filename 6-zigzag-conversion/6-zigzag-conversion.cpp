@@ -15,14 +15,20 @@ public:
                 while(i < s.length())
                 {
                       // cout<<s[i]<<" "<<i<<"\n";
-                    visited[i] = true;
-                    res.push_back(s[i]);
+                    if(!visited[i])
+                    {
+                         visited[i] = true;
+                         res.push_back(s[i]);
+                    }
+                   
                     
-                    if(j > 0 && j < numRows-1 && i+2*(numRows-1) - 2*j >= 0 && i+2*(numRows-1) - 2*j < s.length() &&  !visited[i+2*(numRows-1) - 2*j])
+                    // i + 2*(numRows - 1 - j)
+                    
+                    if( (i + 2*(numRows - 1 - j)) < s.length() &&  !visited[i + 2*(numRows - 1 - j)])
                     {
                        // cout<<s[i+2*(numRows-1) - 2*j]<<" "<<i+2*(numRows-1) - 2*j<<"\n";
-                        visited[i+2*(numRows-1) - 2*j] = true;
-                        res.push_back(s[i+2*(numRows-1) - 2*j]);
+                        visited[i + 2*(numRows - 1 - j)] = true;
+                        res.push_back(s[i + 2*(numRows - 1 - j)]);
                     }
                          
                     
