@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    bool slope(vector<int> a, vector<int> b, vector<int> c)
+    bool slope(vector<int> &a, vector<int> &b, vector<int> &c)
     {
         if( ((c[1] - a[1]) * (b[0]-a[0]))  == ((c[0]-a[0]) * (b[1]-a[1]))  )
             return true;
@@ -32,15 +32,10 @@ public:
                 
                 for(int k=0; k<n; k++)
                 {
-                   if( k!=i && k!= j)
+                   if( k!=i && k!= j && slope(points[i], points[j], points[k]) )
                    {
                        
-                       if((points[k][1] - points[i][1])*(points[j][0] - points[i][0]) == (points[j][1] - points[i][1])*(points[k][0]-points[i][0]) )
-                       {
-                           count++;
-                       }
-                       
-                       // count++;
+                       count++;
                        // visited[k] = true;
                    }
                         
