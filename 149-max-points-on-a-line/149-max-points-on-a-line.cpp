@@ -18,15 +18,11 @@ public:
         
         int res = 0;
         
-        // vector<bool> visited(n);
-        
         
         for(int i=0; i<n-2;i++)
         {
             for(int j = i+1; j<n-1;j++)
             {   
-                // if(visited[j])
-                //     continue;
                 
                 int count = 2;
                 
@@ -35,7 +31,6 @@ public:
                    if( slope(points[i], points[j], points[k]) )
                    {
                        count++;
-                       // visited[k] = true;
                    }
                         
                 }
