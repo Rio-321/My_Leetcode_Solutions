@@ -3,7 +3,7 @@ public:
     
     bool slope(vector<int> &a, vector<int> &b, vector<int> &c)
     {
-        if( ((c[1] - a[1]) * (b[0]-a[0]))  == ((c[0]-a[0]) * (b[1]-a[1]))  )
+        if( (c[1] - b[1]) * (b[0]-a[0])  ==  (c[0]-b[0]) * (b[1]-a[1]) )
             return true;
         
         return false;
@@ -16,25 +16,24 @@ public:
         if(n <= 2)
             return  n;
         
-        int res = 2;
+        int res = 0;
         
-        vector<bool> visited(n);
+        // vector<bool> visited(n);
         
         
-        for(int i=0; i<n;i++)
+        for(int i=0; i<n-2;i++)
         {
-            for(int j = i+1; j<n;j++)
+            for(int j = i+1; j<n-1;j++)
             {   
                 // if(visited[j])
                 //     continue;
                 
                 int count = 2;
                 
-                for(int k=0; k<n; k++)
+                for(int k=j+1; k<n; k++)
                 {
-                   if( k!=i && k!= j && slope(points[i], points[j], points[k]) )
+                   if( slope(points[i], points[j], points[k]) )
                    {
-                       
                        count++;
                        // visited[k] = true;
                    }
@@ -42,9 +41,6 @@ public:
                 }
                 
                 res = max(res, count);
-                
-                if(count == n)
-                    return n;
             }
         }
         
