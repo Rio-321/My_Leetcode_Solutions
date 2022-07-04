@@ -3,32 +3,35 @@ public:
     void sortColors(vector<int>& nums) {
         
         
-        //My Approach
-        // int zero = -1, one = -1, two = -1;
+        //Optimal Approach
+        // [0,low-1] --> 0
+        // [low,high] --> 1
+        // [high+1, n-1] --> 2
+        // mid --> current index
         
         int low = 0, high = nums.size()-1;
         int mid = 0;
         
-        while(mid<=high)
-        {
-             if(nums[mid] == 2)
-            {
-                swap(nums[mid], nums[high]);
-                high--;
-                continue;
-            }
-            
-            if(nums[mid] == 0)
-            {
-                swap(nums[mid], nums[low]);
-                low++;
-                mid++;
-                continue;
-            }
-            
-            if(nums[mid] == 1)
-                mid++;
-        }
+       while(mid <= high)
+       {
+           switch (nums[mid]){
+                   
+               case 1:
+                   mid++;
+                   break;
+               case 2:
+                   swap(nums[mid], nums[high]);
+                   high--;
+                   break;
+                        
+               case 0:
+                    swap(nums[mid], nums[low]);
+                    low++;
+                    mid++;
+                    break;
+                    
+           }
+       }
         
         
     }
