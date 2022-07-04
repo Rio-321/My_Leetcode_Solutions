@@ -19,8 +19,8 @@ public:
             {
                 two++;
                 one++;
-                nums[two] = nums[one];
-                // swap(ans[one], ans[two]);
+                // nums[two] = nums[one];
+                swap(nums[one], nums[two]);
                 nums[one] = 1;
             }
             else
@@ -28,20 +28,13 @@ public:
                 zero++;
                 one++;
                 two++;
-                nums[two] = nums[one];
-                nums[one] = nums[zero];
+                // nums[two] = nums[one];
+                swap(nums[two], nums[one]);
+                swap(nums[one], nums[zero]);
+                // nums[one] = nums[zero];
                 nums[zero] = 0;
             }
         }
         
-        // cout<<zero<<" "<<one<<" "<<two<<"\n";
-        
-        // for(auto x:ans)
-        //     cout<<x<<" ";
-        
-        // for(int i=0;i<n;i++)
-        //     nums[i] = ans[i];
-        
-        // return nums;
     }
 };
