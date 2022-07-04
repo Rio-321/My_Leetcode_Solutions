@@ -4,32 +4,32 @@ public:
         
         
         //My Approach
-        int zero = -1, one = -1, two = -1;
+        // int zero = -1, one = -1, two = -1;
         
-        for(auto x:nums)
+        int low = 0, high = nums.size()-1;
+        int mid = 0;
+        
+        while(mid<=high)
         {
-            if(x == 2)
+             if(nums[mid] == 2)
             {
-               two++;
-               nums[two] = 2;
+                swap(nums[mid], nums[high]);
+                high--;
+                continue;
             }
-            else if(x == 1)
+            
+            if(nums[mid] == 0)
             {
-                two++;
-                one++;
-                swap(nums[one], nums[two]);
-                nums[one] = 1;
+                swap(nums[mid], nums[low]);
+                low++;
+                mid++;
+                continue;
             }
-            else
-            {
-                zero++;
-                one++;
-                two++;
-                swap(nums[two], nums[one]);
-                swap(nums[one], nums[zero]);
-                nums[zero] = 0;
-            }
+            
+            if(nums[mid] == 1)
+                mid++;
         }
+        
         
     }
 };
