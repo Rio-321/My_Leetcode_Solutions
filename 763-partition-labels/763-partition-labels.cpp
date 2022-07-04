@@ -2,6 +2,8 @@ class Solution {
 public:
     vector<int> partitionLabels(string s) {
         
+        
+        // My Approach
         vector<int> res;
         int n = s.length();
         if(n == 1)
