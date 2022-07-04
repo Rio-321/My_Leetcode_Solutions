@@ -11,34 +11,34 @@ public:
             if(x == 2)
             {
                two++;
-               ans[two] = 2;
+               nums[two] = 2;
             }
             else if(x == 1)
             {
                 two++;
                 one++;
-                ans[two] = ans[one];
+                nums[two] = nums[one];
                 // swap(ans[one], ans[two]);
-                ans[one] = 1;
+                nums[one] = 1;
             }
             else
             {
                 zero++;
                 one++;
                 two++;
-                ans[two] = ans[one];
-                ans[one] = ans[zero];
-                ans[zero] = 0;
+                nums[two] = nums[one];
+                nums[one] = nums[zero];
+                nums[zero] = 0;
             }
         }
         
         // cout<<zero<<" "<<one<<" "<<two<<"\n";
         
-        for(auto x:ans)
-            cout<<x<<" ";
+        // for(auto x:ans)
+        //     cout<<x<<" ";
         
-        for(int i=0;i<n;i++)
-            nums[i] = ans[i];
+        // for(int i=0;i<n;i++)
+        //     nums[i] = ans[i];
         
         // return nums;
     }
