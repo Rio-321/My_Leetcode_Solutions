@@ -3,34 +3,32 @@ public:
     vector<int> partitionLabels(string s) {
         
         
-        // My Approach
+        // Optimal Approach
+        // https://leetcode.com/problems/partition-labels/discuss/113293/C%2B%2B-6-lines-O(n)-or-O(1)-two-simple-passes
         vector<int> res;
         int n = s.length();
         if(n == 1)
             return {1};
         
-        vector<int> max_freq(128,0);
-        vector<int> curr_freq(128,0);
-        int start = -1;
-        int count = 0;
+        vector<int> max_ind(128,0);
+
         
-        for(auto x:s)
-            max_freq[x]++;
+        for(int i=0;i<n;i++)
+            max_ind[s[i]] = i;
+        
+
+        int start = 0;
+
+        int indMax = -1;
         
         for(int i=0;i<n;i++)
         {
-            curr_freq[s[i]]++;
-            
-            if(curr_freq[s[i]] == 1 && curr_freq[s[i]] <= max_freq[s[i]])
-                count++;
-            
-            if(curr_freq[s[i]] == max_freq[s[i]])
-                count--;
-            
-            if(count == 0)
+            indMax = max(indMax, max_ind[s[i]]);
+               
+            if(i == indMax)
             {
-                res.push_back(i-start);
-                start = i;
+                res.push_back(i-start+1);
+                start = i+1;
             }
         }
         
