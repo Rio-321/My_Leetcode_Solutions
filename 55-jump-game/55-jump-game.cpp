@@ -2,6 +2,8 @@ class Solution {
 public:
     bool canJump(vector<int>& nums) {
         
+        
+        //MY APPROACH
         int n = nums.size();
         
         if(n == 1 ) return true;
