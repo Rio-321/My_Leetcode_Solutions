@@ -10,7 +10,6 @@ public:
        
         
         vector<int> pre_profit(n, 0);
-        vector<int> post_profit(n, 0);
         
         int mini = prices[0];
         for(int i=1;i<n;i++)
@@ -29,22 +28,11 @@ public:
         for(int i=n-2;i>0;i--)
         {
             profit = max(profit, maxi-prices[i]);
-            post_profit[i] = profit;
             
             res = max(res, pre_profit[i-1] + profit);
             
             maxi = max(maxi, prices[i]);
         }
-        
-//         profit = 0;
-        
-//         for(int i=0;i<n-1;i++)
-//         {
-//            profit = max(profit, pre_profit[i]+post_profit[i+1]); 
-//         }
-//         profit = max({profit, pre_profit[n-1], post_profit[0]});
-        
-        
 
         
         
