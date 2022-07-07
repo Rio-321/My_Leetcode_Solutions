@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    // Optimal solution
+    // Optimal solution - memoization solution
     int solve(int ind, int trans, vector<int> &prices, int &k, vector<vector<int>> &dp)
     {
         
