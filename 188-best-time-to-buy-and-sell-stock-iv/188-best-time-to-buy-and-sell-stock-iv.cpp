@@ -1,43 +1,39 @@
 class Solution {
 public:
     
-    // Optimal solution - memoization solution
-    int solve(int ind, int trans, vector<int> &prices, int &k, vector<vector<int>> &dp)
-    {
-        
-        if(ind == prices.size() || trans == 2*k)
-            return 0;
-        
-        if(dp[ind][trans] != -1)
-            return dp[ind][trans];
-        
-        if(trans%2 ==0 )  // buy
-        {
-           return dp[ind][trans] = max( (-prices[ind] + solve(ind+1, trans+1, prices, k, dp)), solve(ind+1, trans, prices, k, dp)) ;
-        }
-        else //  sell
-        {
-             return dp[ind][trans] = max( (prices[ind] + solve(ind+1, trans+1, prices, k, dp)), solve(ind+1, trans, prices, k, dp)) ;
-        }
-        
-            
-    }
+    // Optimal solution - Tabulation solution
     
     
     int maxProfit(int k, vector<int>& prices) 
     {
            
-        int trans = 0;
-        int profit = 0;
         
         int n = prices.size();
         
-        vector<vector<int>> dp(n, vector<int>(2*k, -1));
+        vector<vector<int>> dp(n+1, vector<int>(2*k+1, 0));
         
-        profit = solve(0,trans, prices, k, dp);
-        return profit;
+        for(int ind=n-1; ind>=0;ind--)
+        {   
+            for(int trans=2*k-1; trans>=0; trans--)
+            {
+                
+               if(trans%2 == 0)
+               {
+                   dp[ind][trans] = max(-prices[ind]+dp[ind+1][trans+1], dp[ind+1][trans]);
+               }
+              else
+                {
+                    dp[ind][trans] = max(prices[ind]+dp[ind+1][trans+1], dp[ind+1][trans]);
+                }
+                
+            }
+            
+        }
+            
+
         
-       
+        return dp[0][0];
+               
         
     }
 };
