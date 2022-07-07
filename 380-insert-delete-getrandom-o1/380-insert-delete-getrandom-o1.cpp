@@ -37,10 +37,10 @@ public:
     
     int getRandom() {
        
-        // srand(time(0));
-        // int i = (rand() % vec.size());
+
+        int i = (rand() % vec.size());
         
-        return vec[rand()%vec.size()];
+        return vec[i];
         
         
     }
