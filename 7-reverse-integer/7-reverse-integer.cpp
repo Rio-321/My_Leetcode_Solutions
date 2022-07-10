@@ -3,6 +3,8 @@ public:
     int reverse(int x) {
         
         
+        // time complexity will be O(log(x))
+        
 //         // MY SOLUTION
 //         if(x == INT_MIN)
 //             return 0;
