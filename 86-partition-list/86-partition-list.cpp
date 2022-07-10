@@ -13,17 +13,13 @@ public:
     ListNode* partition(ListNode* head, int x) {
         
        ListNode* curr = head;
-       ListNode* newhead = NULL;
-       
-        ListNode* small = NULL;
-        ListNode* big = NULL;
-        ListNode* mid = NULL;
+
         
         ListNode* smalldummy = new ListNode(-1);
         ListNode* bigdummy  = new ListNode(-1);
         
-        small = smalldummy;
-        big = bigdummy;
+        ListNode* small = smalldummy;
+        ListNode* big = bigdummy;
         
         while(curr!=NULL)
         {
