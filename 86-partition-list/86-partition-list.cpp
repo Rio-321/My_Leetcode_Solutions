@@ -19,56 +19,35 @@ public:
         ListNode* big = NULL;
         ListNode* mid = NULL;
         
+        ListNode* smalldummy = new ListNode(-1);
+        ListNode* bigdummy  = new ListNode(-1);
+        
+        small = smalldummy;
+        big = bigdummy;
         
         while(curr!=NULL)
         {
             if(curr->val < x)
             {
-                if(small != NULL)
-                {
-                    small->next = curr;
-                    small = curr;
-                }
-                else
-                {
-                    small = curr;
-                    newhead = curr;
-                }
-                    
+                small->next = curr;
+                small = curr;
             }
             else
             {
-                if(big!=NULL)
-                {
-                    big->next = curr;
-                    big = curr;
-                    
-                }
-                else
-                {
-                    big = curr;
-                    mid = curr;
-                }
+                big->next = curr;
+                big = curr;
             }
             
             curr = curr->next;
         }
         
-        if(small!=NULL)
-        small->next = mid;
         
-        if(big!=NULL)
+        small->next = bigdummy->next;
         big->next = NULL;
         
-        // while(small!=NULL)
-        // {
-        //     cout<<small->val<<" ";
-        //     small = small->next;
-        // }
+        return smalldummy->next;
         
-        if(newhead != NULL)
-        return newhead;
-        else
-            return head;
+        
+       
     }
 };
