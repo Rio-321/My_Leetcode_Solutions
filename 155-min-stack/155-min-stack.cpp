@@ -1,6 +1,7 @@
 class MinStack {
 public:
   
+    // https://leetcode.com/problems/min-stack/discuss/1209254/C%2B%2B-Simple-code-with-one-stack
     stack<pair<int,int>> st;
     
     MinStack() {
