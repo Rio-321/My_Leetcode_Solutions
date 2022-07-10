@@ -29,7 +29,7 @@ public:
 //     }
     
     // OPTIMAL SOLUTION
-        
+        // see how negative numbersa are handled
         int y  = 0;
         while(x)
         {
