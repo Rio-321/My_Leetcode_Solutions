@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    
+    // My Solution
     vector<int> rightSideView(TreeNode* root) {
         
         if(root==NULL) return {};
