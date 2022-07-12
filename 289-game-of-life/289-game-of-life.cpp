@@ -3,11 +3,13 @@ public:
     
     int m=0,n=0;
     
-    void convert(vector<vector<int>> &board, int i, int j,vector<vector<int>> &ans)
+    int convert(vector<vector<int>> &board, int i, int j)
     {
         
             int i_move[4] = {0,1,1,1};
             int j_move[4] = {1,-1,0,1};
+        
+            int one = 0;
             
             for(int k=0;k<4;k++)
             {
@@ -15,34 +17,23 @@ public:
                 int y = j+j_move[k];
                 if(x>=0 && x<m && y>=0 && y<n)
                 {
-                    // if(board[x][y]==1)
-                    //     ans[i][j]++;
+                    if(board[x][y] >= 10)
+                    {
+                        one++;
+                    }
                     
-                    ans[i][j] += (board[x][y] & 1);
+                    if(board[i][j] >= 10)
+                    {
+                        board[x][y]++;
+                    }
                         
-                     
-                    // if(board[i][j]==1)
-                    //       ans[x][y]++;
-                    ans[x][y] += (board[i][j] & 1);
                 }
                     
             }
         
-        int cnt = ans[i][j];
-        
-        if(board[i][j]==1)
-        {
-            if(cnt<2 || cnt>3) 
-                board[i][j] = 0; 
-        }
-        else
-        {
-            if(cnt==3) board[i][j] = 1;
-        }
-        
-        
-        
+        return one;   
     }
+    
     void gameOfLife(vector<vector<int>>& board) {
         
         m = board.size();
@@ -53,9 +44,40 @@ public:
         {
             for(int j=0;j<n;j++)
             {
-                convert(board,i,j,ans);
+                if(board[i][j] == 1)
+                    board[i][j] = 10;
             }
         }
+        
+         for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+               if(board[i][j]>=10) // curr is 1
+               {
+                   int one = board[i][j] - 10;
+                   one = one  + convert(board,i,j);
+                   
+                   if(one == 2 || one == 3)
+                       board[i][j] = 1;
+                   else
+                       board[i][j] = 0;
+                   
+               }
+                else // curr is 0
+                {
+                    int one = board[i][j] - 0;
+                    one = one + convert(board,i,j);
+                    
+                    if(one == 3)
+                        board[i][j] = 1;
+                    else
+                        board[i][j] = 0;
+                }
+            }
+        }
+        
+        
     
     }
 };
