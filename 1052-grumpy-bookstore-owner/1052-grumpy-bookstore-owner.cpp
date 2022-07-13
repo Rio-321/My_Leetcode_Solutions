@@ -6,7 +6,6 @@ public:
         
         int pre = 0, post = 0;
         
-        
         for(int i=n-1;i>=0;i--)
         {      
             if(grumpy[i] == 0)
@@ -21,12 +20,10 @@ public:
         
         while(r < n)
         {
-            
             curr = curr + customers[r];
             
             if(grumpy[r] == 0)
                 post = post - customers[r];
-            
                 
             if(r-l+1 == minutes)
             {
