@@ -3,26 +3,15 @@ public:
     int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int minutes) {
         
         int n = customers.size();
-        vector<int> pre(n,0);
-        vector<int> post(n,0);
         
-        for(int i=0;i<n;i++)
-        {
-            pre[i] = (i>0) ? pre[i-1] : 0;
-            
-            if(grumpy[i]==0)
-            {
-                pre[i] = pre[i] + customers[i]; 
-            }
-        }
+        int pre = 0, post = 0;
+        
         
         for(int i=n-1;i>=0;i--)
-        {
-            post[i] = (i < n-1 ) ? post[i+1] : 0;
-            
+        {      
             if(grumpy[i] == 0)
             {
-                post[i] = post[i] + customers[i];
+                post = post + customers[i];
             }
         }
         
@@ -32,17 +21,23 @@ public:
         
         while(r < n)
         {
-            // if(grumpy[r]==0)
-                curr = curr + customers[r];
+            
+            curr = curr + customers[r];
+            
+            if(grumpy[r] == 0)
+                post = post - customers[r];
             
                 
             if(r-l+1 == minutes)
             {
-                int ans = curr + ((l > 0) ? pre[l-1] : 0) + ((r < n-1) ? post[r+1] : 0);
+                int ans = curr + pre + post;
                 res = max(res, ans);
                 
-                // if(grumpy[l] == 0)
-                    curr = curr - customers[l];
+                curr = curr - customers[l];
+                
+                if(grumpy[l]==0)
+                    pre = pre + customers[l];
+                
                 l++;
             }
             r++;
