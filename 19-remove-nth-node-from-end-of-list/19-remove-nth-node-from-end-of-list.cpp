@@ -14,9 +14,11 @@ public:
         
         ListNode* start = new ListNode();
         
-        start->next = head;
+        
         ListNode* fast = start;
         ListNode* slow = start;
+        
+        start->next = head;
         
         for(int i=1;i<=n;i++)
             fast = fast->next;
