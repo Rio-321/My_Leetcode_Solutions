@@ -23,6 +23,8 @@ public:
 
 // ************************************binary search solution**************
         
+        // Time - O(nlog(n));
+        // space - O(1)
         
         int low = 1;
         int high = nums.size()-1;
