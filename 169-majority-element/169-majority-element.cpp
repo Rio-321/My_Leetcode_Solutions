@@ -20,26 +20,26 @@ public:
                     vote--;
             }
             
-            // cout<<vote<<" ";
         }
         
-        // cout<<vote<<" "<<majority<<"\n";
         
         if(vote == 0)
             return -1;
-        
-        int count = 0;
-        
-        for(int i=0;i<n;i++)
-        {
-            if(nums[i] == majority)
-                count++;
-        }
-        
-        if(count > n/2)
-            return majority;
         else
-            return -1;
+            return majority;
+        
+//         int count = 0;
+        
+//         for(int i=0;i<n;i++)
+//         {
+//             if(nums[i] == majority)
+//                 count++;
+//         }
+        
+//         if(count > n/2)
+//             return majority;
+//         else
+//             return -1;
     }
 };
 
