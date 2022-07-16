@@ -11,19 +11,20 @@ public:
         
         int count = 0;
         
-        map<int,int> mp;
+        // map<int,int> mp;
+        
+        vector<int> mp(61, 0);
         
         for(int i=0;i<n;i++)
         {
-            if(mp.find(60-time[i]) != mp.end())
-            {
-                 count += mp[60-time[i]];
-            }
             
-            if(time[i] == 0)
+            count = count + mp[60 - time[i]];
+            
+            
+            if(time[i]==0)
                 mp[60]++;
             else
-                mp[time[i]]++;
+            mp[time[i]]++;
         }
         
 //         int l = 0, r = n-1;
