@@ -35,10 +35,7 @@ public:
                         continue; 
                     }
                     
-                    long long sum =  nums[i] + nums[j];
-                    // sum +=  nums[j];
-                    sum +=  nums[l];
-                    sum += nums[r];
+                    long long sum =  (long long)nums[i] + (long long)nums[j]  + (long long)nums[l] + (long long)nums[r];
                     
                     if(sum == target)
                     {
