@@ -17,6 +17,7 @@ public:
         
         return res;
     }
+    
     int countSubstrings(string s) {
       
         int res = 0;
