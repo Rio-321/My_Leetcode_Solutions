@@ -11,7 +11,7 @@ public:
         for(int i=0;i<n;i++)
         {
             int len = str[i].length();
-           mini = min(mini, len); 
+            mini = min(mini, len); 
         }
         
         
