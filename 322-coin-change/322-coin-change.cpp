@@ -1,4 +1,7 @@
+// Time - O(n*amount)
+// space = O(n*amount)
 
+// Memoization solution
 class Solution {
 public:
     
