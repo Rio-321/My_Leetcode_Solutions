@@ -1,3 +1,5 @@
+
+
 // My solution
 
 class Solution {
@@ -9,24 +11,24 @@ public:
         if(n==1)
             return false;
         
-        unordered_map<int, int> mp;
+       unordered_set<int> st;
         int pre_sum = 0;
-        int modk = 0;
+        int pre = 0;
+        
         for(int i=0;i<n;i++)
         {
-            pre_sum = pre_sum + nums[i];
-            modk = pre_sum%k;
+            pre_sum += nums[i];
             
-            if(pre_sum%k==0 && i>0)  return true;
+            int modk = pre_sum % k;
+
             
-            if(mp.find(modk)!=mp.end() && i-mp[modk]>1)
+            if(st.count(modk))
                 return true;
-            
-            if(mp.find(modk)==mp.end())
-                mp[modk] = i;
+            st.insert(pre);
+            pre = modk;
         }
         
-       return false;
+        return false;
         
     }
 };
