@@ -1,28 +1,42 @@
 class MyHashSet {
 public:
 
-    int* set;
+    list<int>* st;
     int siz;
+    
     MyHashSet() {
-        siz = 1e6+1;
-         set = new int[siz];
-        for(int i=0;i<siz;i++)
-            set[i] = 0;
+        siz = 1000;
+        st = new list<int>[siz];
+    }
+    
+    int hash(int key)
+    {
+        return key % siz;
     }
     
     void add(int key) {
         
-        set[key] = 1;
+        if(contains(key)) return;
+        
+        int i = hash(key);
+        
+        st[i].push_back(key);   
+       
     }
     
     void remove(int key) {
         
-        set[key] = 0;
+        int i = hash(key);
+        st[i].remove(key);
+        
     }
     
     bool contains(int key) {
-        if(set[key])
-            return true;
+      
+        int i = hash(key);
+        for(auto x: st[i])
+            if(x == key)
+                return true;
         
         return false;
     }
