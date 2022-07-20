@@ -2,10 +2,11 @@ class MyHashSet {
 public:
 
     int* set;
-    
+    int siz;
     MyHashSet() {
-         set = new int[1000001];
-        for(int i=0;i<1000001;i++)
+        siz = 1e6+1;
+         set = new int[siz];
+        for(int i=0;i<siz;i++)
             set[i] = 0;
     }
     
