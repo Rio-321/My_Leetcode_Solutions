@@ -1,7 +1,8 @@
 class Solution {
 public:
     vector<int> restoreArray(vector<vector<int>>& arr) {
-        map<int, vector<int>> mp;
+        
+    unordered_map<int, vector<int>> mp;
     
     int src = -1;
     
