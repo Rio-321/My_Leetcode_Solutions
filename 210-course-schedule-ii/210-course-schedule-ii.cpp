@@ -6,8 +6,7 @@ public:
         int n = prerequisites.size();
         vector<int> adj[numCourses];
         vector<int> indegree(numCourses);
-        
-        // if(numCourses<2) return res;
+    
         
         for(int i=0;i<n;i++)
         {
@@ -47,9 +46,9 @@ public:
         if(count==numCourses)
             return res;
         
-        res.clear();
+        // res.clear();
         
-        return res;
+        return {};
         
     }
 };
