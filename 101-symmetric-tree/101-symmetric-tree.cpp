@@ -26,7 +26,7 @@ public:
         else
             return false;
     }
-    bool isSymmetric(TreeNode* root) {
+      bool isSymmetric(TreeNode* root) {
         
         return is_mirror(root->left, root->right);
     }
