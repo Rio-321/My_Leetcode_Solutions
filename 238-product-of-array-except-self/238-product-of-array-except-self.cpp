@@ -1,5 +1,9 @@
 class Solution {
 public:
+    
+        // My Approach
+    // time - O(N);
+    // space - O(n)
     vector<int> productExceptSelf(vector<int>& nums) {
 
         int n = nums.size();
@@ -12,8 +16,7 @@ public:
         
         for(int i=n-1;i>=0;i--)
             suffix[i] = (i<n-1) ? suffix[i+1]*nums[i] : 1*nums[i];
-            
-            
+        
         for(int i=0;i<n;i++)
         {
             if(i==0)
