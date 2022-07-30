@@ -1,3 +1,7 @@
+// Time - O(n^3)
+// Space - O(n^3)
+
+
 // good solution - // https://leetcode.com/problems/cherry-pickup/discuss/1481719/c%2B%2B-fully-explained-recursion-%2B-memoisation-approach-.
 
 
