@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/discuss/1708946/C%2B%2B-solution-using-Vector-and-Unordered-map!
 class RandomizedCollection {
 public:
     
@@ -54,7 +55,7 @@ public:
     
     int getRandom() {
         
-        // srand(time(0));
+        // srand(time(0));  // answer will be getting wrong due to this
         int ind = (rand() % arr.size());
         
         return arr[ind].first;
