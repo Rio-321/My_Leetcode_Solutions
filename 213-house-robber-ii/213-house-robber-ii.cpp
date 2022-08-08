@@ -11,7 +11,6 @@ public:
         
         // first  element  taken
         
-        // vector<int> dp(n, 0);
         
         int prev = 0;
         int prev_prev = 0;
@@ -31,7 +30,6 @@ public:
         
         // first element not taken taken
         
-        // vector<int> dp2(n,0);
         
         prev_prev = 0;
         prev = nums[1];
