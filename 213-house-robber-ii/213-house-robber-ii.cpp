@@ -31,14 +31,21 @@ public:
         
         // first element not taken taken
         
-        vector<int> dp2(n,0);
-        dp2[1] = nums[1];
+        // vector<int> dp2(n,0);
+        
+        prev_prev = 0;
+        prev = nums[1];
+        curr = nums[1];
+        
         for(int i=2;i<n;i++)
         {
-            dp2[i] = max(dp2[i-1], dp2[i-2]+nums[i]);
+            curr = max(prev, prev_prev+nums[i]);
+            
+            prev_prev = prev;
+            prev = curr;
         }
         
-        ans = max(ans, dp2[n-1]);
+        ans = max(ans, curr);
         
         
         return ans;
