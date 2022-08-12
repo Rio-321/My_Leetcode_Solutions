@@ -32,6 +32,17 @@ public:
         head->next = tail;
         tail->prev = head;
     }
+    
+    void changePos(Node* resnode)
+    {
+             resnode->prev->next = resnode->next;
+             resnode->next->prev = resnode->prev;
+             
+             resnode->next = head->next;
+             head->next = resnode;
+             resnode->next->prev = resnode;
+             resnode->prev = head;
+    }
  
     
     int get(int key) 
@@ -41,13 +52,9 @@ public:
              Node* resnode = mp[key];
              int res = resnode->value;
              
-             resnode->prev->next = resnode->next;
-             resnode->next->prev = resnode->prev;
+             changePos(resnode);
              
-             resnode->next = head->next;
-             head->next = resnode;
-             resnode->next->prev = resnode;
-             resnode->prev = head;
+             
              
              return res;
          }
