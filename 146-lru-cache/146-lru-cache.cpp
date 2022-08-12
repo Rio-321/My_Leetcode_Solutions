@@ -81,13 +81,15 @@ public:
                 resnode->value = value;
                 mp[key] = resnode;
                 
-                 resnode->prev->next = resnode->next;
-                 resnode->next->prev = resnode->prev;
+                changePos(resnode);
+                
+//                  resnode->prev->next = resnode->next;
+//                  resnode->next->prev = resnode->prev;
 
-                 resnode->next = head->next;
-                 head->next = resnode;
-                 resnode->next->prev = resnode;
-                 resnode->prev = head;
+//                  resnode->next = head->next;
+//                  head->next = resnode;
+//                  resnode->next->prev = resnode;
+//                  resnode->prev = head;
             }
             else
             {
