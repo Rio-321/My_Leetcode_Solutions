@@ -54,8 +54,6 @@ public:
              
              changePos(resnode);
              
-             
-             
              return res;
          }
         
@@ -69,13 +67,8 @@ public:
                  Node* resnode = mp[key];
                  resnode->value = value;
                  
-                 resnode->prev->next = resnode->next;
-                 resnode->next->prev = resnode->prev;
-
-                 resnode->next = head->next;
-                 head->next = resnode;
-                 resnode->next->prev = resnode;
-                 resnode->prev = head;
+                 changePos(resnode);
+                
                    
              }
         else
