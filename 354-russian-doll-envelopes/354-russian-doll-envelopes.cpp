@@ -1,4 +1,10 @@
- bool mycmp(const vector<int> &a, const vector<int> &b)
+// https://leetcode.com/problems/russian-doll-envelopes/discuss/2400723/Easy-cpp-solution-with-explaination 
+
+
+class Solution {
+public:
+    
+   static bool mycmp(const vector<int> &a, const vector<int> &b)
     {
         
         if(a[0] == b[0])
@@ -7,10 +13,6 @@
         return a[0] < b[0];
     }
 
-class Solution {
-public:
-    
-   
     
     int ceil_ind(vector<int> &dp, int x, int len)
     {
