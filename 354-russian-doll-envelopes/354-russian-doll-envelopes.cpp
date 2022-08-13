@@ -1,4 +1,4 @@
- bool mycmp(vector<int> &a, vector<int> &b)
+ bool mycmp(const vector<int> &a, const vector<int> &b)
     {
         
         if(a[0] == b[0])
