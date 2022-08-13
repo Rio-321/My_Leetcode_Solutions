@@ -4,7 +4,7 @@
 class Solution {
 public:
     
-   static bool mycmp(const vector<int> &a, const vector<int> &b)
+    static bool mycmp(const vector<int> &a, const vector<int> &b)
     {
         
         if(a[0] == b[0])
