@@ -26,6 +26,8 @@ public:
     
     int change(int amount, vector<int>& coins) {
       
+        
+        // sort(coins.rbegin(), coins.rend());
         int n = coins.size();
         
         vector<vector<int>> dp(n, vector<int>(amount+1, -1));
