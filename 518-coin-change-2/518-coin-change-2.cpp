@@ -1,37 +1,36 @@
 class Solution {
 public:
     
-    int f(vector<int> &coins, int ind, int sum, vector<vector<int>> &dp)
+    int func(int i, int amount, vector<int> &coins, vector<vector<int>> &dp)
     {
-        if(ind==0)
-        {
-            dp[sum][ind] = (sum%coins[0]==0);
-            return dp[sum][ind];
-        }
+        if(amount == 0)
+            return 1;
         
+        if(i == -1)
+            return 0;
         
-        if(dp[sum][ind]!=-1) return dp[sum][ind];
+        if(dp[i][amount] != -1)
+            return dp[i][amount];
         
+        int res = 0;
+        res = func(i-1, amount, coins, dp);  //not taken
         
-        int notTake = f(coins,ind-1,sum,dp);
-        int take = 0;
+        if(amount >= coins[i])
+            res += func(i, amount-coins[i], coins,dp);
         
-        if(coins[ind]<=sum)
-            take = f(coins,ind, sum-coins[ind],dp);
+        dp[i][amount] = res;
         
-        dp[sum][ind] = take + notTake; 
-        
-        return dp[sum][ind];
+        return res;
     }
-    
+  
     
     int change(int amount, vector<int>& coins) {
-        
+      
         int n = coins.size();
         
-        vector<vector<int>> dp(amount+1, vector<int>(n,-1));
+        vector<vector<int>> dp(n, vector<int>(amount+1, -1));
         
-        return f(coins,n-1,amount,dp);
+        return func(n-1, amount, coins, dp);
         
     }
 };
