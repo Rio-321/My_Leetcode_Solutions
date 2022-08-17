@@ -14,8 +14,11 @@ public:
 
     void flatten(TreeNode* root) {
         
-        if(root!=NULL)
-        {
+        if(root==NULL)
+            return;
+        
+        
+            cout << root->val << "\n";
             TreeNode* temp = root->right;
             root->right = root->left;
             root->left = NULL;
@@ -30,8 +33,12 @@ public:
             node->right = temp;
             
             flatten(root->right);
-        }
+        
         
         return;
     }
 };
+
+
+
+// Best Solution - https://leetcode.com/problems/flatten-binary-tree-to-linked-list/discuss/288414/C%2B%2B-solution-beats-100
