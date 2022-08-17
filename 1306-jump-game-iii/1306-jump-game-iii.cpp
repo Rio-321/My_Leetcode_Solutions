@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    bool func(vector<int> &arr, int start, vector<bool> &visited)
+    bool func(vector<int> &arr, int start, vector<bool> &visited, vector<int> &dp)
     {
           if(start<0 || start >= arr.size())
               return false;
@@ -13,13 +13,16 @@ public:
               return true;
         
          visited[start] = true;
+        
+        if(dp[start] != -1)
+            return dp[start];
             
         
-           bool one =  func(arr, arr[start]+start, visited);
+           bool one =  func(arr, arr[start]+start, visited, dp);
         if(one == true)
-            return true;
+            return dp[start] = true;
                 
-           return func(arr,start-arr[start], visited);
+           return dp[start] = func(arr,start-arr[start], visited, dp);
     }
     
     bool canReach(vector<int>& arr, int start) {
@@ -28,6 +31,8 @@ public:
         int n = arr.size();
         vector<bool> visited(n);
         
-        return func(arr, start, visited);
+        vector<int> dp(n, -1);
+        
+        return func(arr, start, visited, dp);
     }
 };
