@@ -72,6 +72,9 @@ public:
            }
        }
        
+       left.clear();
+       right.clear();
+       
    }
     
    void MergeSort(vector<int> &arr, int l, int r)
