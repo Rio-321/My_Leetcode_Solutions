@@ -10,26 +10,32 @@ class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
         
-        if(head == NULL)
-            return head;
+        if(!head || !head->next)
+            return NULL;
         
-        // cout << head->next->next->next->next->val<<"\n";
+        ListNode* slow = head;
+        ListNode* fast = head;
         
-        unordered_set<ListNode*> st;
-        ListNode* curr = head;
-        
-        while(st.find(curr) == st.end())
-         {  
-            st.insert(curr);
-        
-            curr = curr->next;
+        while(fast!= NULL && fast->next != NULL)
+        {
+              fast = fast->next->next;
+              slow = slow->next;
             
-            if(curr == NULL)
-                return NULL;
+                if(slow == fast)
+                {
+                    ListNode* entry = head;
+                    while(entry != slow)
+                    {
+                        entry = entry->next;
+                        slow = slow->next;
+                    }
+                    
+                    return entry;
+                }
+            
         }
         
-        return curr;
-        
+        return NULL;
         
     }
 };
