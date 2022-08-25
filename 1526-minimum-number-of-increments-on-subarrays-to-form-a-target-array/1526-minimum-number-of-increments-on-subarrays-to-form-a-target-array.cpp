@@ -13,7 +13,7 @@ public:
         for(int i=n-2;i>=0;i--)
         {
              if(vec[i] > st.top())
-                  ans = ans - st.top() + vec[i];
+                  ans = ans + (vec[i] - st.top());
             
             st.push(vec[i]);
         }
