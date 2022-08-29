@@ -9,7 +9,7 @@ public:
             return dp[i][validity];
         
          if(days[i] <= validity)
-              return solve(days, costs, i+1, validity, dp);
+              return dp[i][validity] =  solve(days, costs, i+1, validity, dp);
         
         int oneDay = costs[0] + solve(days, costs, i+1, days[i], dp);
         int sevenDay = costs[1] + solve(days, costs, i+1, days[i]+6, dp);
