@@ -1,7 +1,8 @@
 class Codec {
 public:
     // Encodes a tree to a single string.
-    string serialize(TreeNode* root) {
+    string serialize(TreeNode* root) 
+    {
         if (root == nullptr) return "#";
         return to_string(root->val)+","+serialize(root->left)+","+serialize(root->right);
     }
@@ -10,7 +11,9 @@ public:
     TreeNode* deserialize(string data) {
         return mydeserialize(data);
     }
-    TreeNode* mydeserialize(string& data) {
+    
+    TreeNode* mydeserialize(string& data) 
+    {
         if (data[0]=='#') {
             if(data.size() > 1) data = data.substr(2);
             return nullptr;
@@ -21,6 +24,7 @@ public:
             return node;
         }
     }
+    
 private:
     int helper(string& data) {
         int pos = data.find(',');
