@@ -39,7 +39,7 @@ public:
         {
             if(is_safe(board,i,col))
             {
-                board[i][col] = 'Q';
+                 board[i][col] = 'Q';
                 
                  Solve_Queen(board,col+1);
 
@@ -63,3 +63,7 @@ public:
         
     }
 };
+
+// https://leetcode.com/problems/n-queens/discuss/810358/C%2B%2B-4ms-Heavily-Commented-Clean-Solution-or-Fast-and-Easy-or-Explanation
+
+// TC= O(n^3)
