@@ -1,107 +1,98 @@
 class LRUCache {
 public:
-
+    
     class Node{
         public:
-        
-        int key;
-        int value;
-        Node* prev;
-        Node* next;
-        
+            int key;
+            int value;
+            Node* prev;
+            Node* next;
         
         Node(int key, int value)
         {
-            this->value = value;
             this->key = key;
+            this->value = value;
+            
             prev = NULL;
             next = NULL;
         }
-            
     };
     
-    Node* head = new Node(-1,-1);
-    Node* tail = new Node(-1,-1);
-    
-    unordered_map<int, Node*> mp;
     int cap;
-   
+    int count = 0;
+    unordered_map<int, Node*> mp;
+    Node* head = new Node(-1, -1);
+    Node* tail = new Node(-1, -1);
+
     LRUCache(int capacity) 
     {
         cap = capacity;
         head->next = tail;
-        tail->prev = head;
+        tail->prev = head; 
     }
+    
     
     void changePos(Node* resnode)
     {
-             resnode->prev->next = resnode->next;
-             resnode->next->prev = resnode->prev;
-             
-             resnode->next = head->next;
-             head->next = resnode;
-             resnode->next->prev = resnode;
-             resnode->prev = head;
+          resnode->prev->next = resnode->next;
+          resnode->next->prev = resnode->prev;
+        
+          resnode->next = head->next;
+          resnode->next->prev = resnode;
+          resnode->prev = head;
+          head->next = resnode;
     }
  
     
     int get(int key) 
     {
-         if(mp.find(key) != mp.end()) // key is present
-         {
-             Node* resnode = mp[key];
-             int res = resnode->value;
-             
-             changePos(resnode);
-             
-             return res;
-         }
+        if(mp.find(key) != mp.end())
+        {
+            Node* curr = mp[key];
+            int res = curr->value;
+            
+            changePos(curr);
+            
+            return res;
+        }
         
         return -1;
     }
     
     void put(int key, int value) 
     {
-             if(mp.find(key) != mp.end())
-             {
-                 Node* resnode = mp[key];
-                 resnode->value = value;
-                 
-                 changePos(resnode);
-                
-                   
-             }
-        else
-        {
-            if(mp.size() == cap)
-            {
-                Node* resnode = tail->prev;
-                mp.erase(resnode->key);
-                resnode->key = key;
-                resnode->value = value;
-                mp[key] = resnode;
-                
-                changePos(resnode);
-                
-//                  resnode->prev->next = resnode->next;
-//                  resnode->next->prev = resnode->prev;
-
-//                  resnode->next = head->next;
-//                  head->next = resnode;
-//                  resnode->next->prev = resnode;
-//                  resnode->prev = head;
-            }
+           if(mp.find(key) != mp.end())
+           {
+               Node* curr = mp[key];
+               curr->value = value;
+               
+               changePos(curr);
+           }
             else
             {
-                 Node* temp = new Node(key, value);
-                 mp[key] = temp;
-                 
-                 temp->next = head->next;
-                 head->next = temp;
-                 temp->next->prev = temp;
-                 temp->prev = head;   
+                if(mp.size() == cap)
+                {   
+                    mp.erase(tail->prev->key);
+                    mp[key] = tail->prev;
+
+                    tail->prev->value = value;
+                    tail->prev->key = key;
+                    changePos(tail->prev);
+
+                }
+                else
+                {
+                    Node* newNode = new Node(key, value);
+                    mp[key] = newNode;
+                    // count++;
+
+                    head->next->prev = newNode;
+                    newNode->next = head->next;
+                    head->next = newNode;
+                    newNode->prev = head;
+
+                }
             }
-        }
     }
 };
 
