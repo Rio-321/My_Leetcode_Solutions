@@ -1,42 +1,44 @@
 class MyHashMap {
 public:
     
-    list<pair<int,int>>* mp;
+    list<pair<int, int>>* mp;
     int siz;
-    
+ 
     MyHashMap() {
+    
         siz = 1000;
-        mp = new list<pair<int,int>>[siz]; 
+        mp = new list<pair<int,int>>[siz];
     }
     
-    int hash(int key)
+    
+    int Hash(int key)
     {
-        return key % siz;
+        return key%siz;
     }
     
+ 
     void put(int key, int value) {
+       
+        int ind = Hash(key);
         
-        int i = hash(key);
-        for(auto &x: mp[i])
+        for(auto &x: mp[ind])
         {
-            if(key == x.first)
+            if(x.first == key)
             {
                 x.second = value;
-                // cout<<x.first<<" "<<x.second<<"\n";
                 return;
             }
         }
         
-        mp[i].push_back({key, value});
-        
+        mp[ind].push_back({key, value});
     }
     
     int get(int key) {
-          
-        int i = hash(key);
-        for(auto x: mp[i])
+        
+        int ind = Hash(key);
+        for(auto &x: mp[ind])
         {
-            if(key == x.first)
+            if(x.first == key)
                 return x.second;
         }
         
@@ -45,18 +47,15 @@ public:
     
     void remove(int key) {
         
-        int i = hash(key);
-        
-        for(auto x:mp[i])
+        int ind = Hash(key);
+        for(auto &x: mp[ind])
         {
-            if(key == x.first)
-            {
-                mp[i].remove({key, x.second});
-                return;
-            }
-        }
-        
-        
+           if(x.first == key)
+           {
+               mp[ind].remove({key, x.second});
+               return;
+           }
+        }        
     }
 };
 
