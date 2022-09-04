@@ -70,7 +70,7 @@ public:
            }
             else
             {
-                if(mp.size() == cap)
+                if(count == cap)
                 {   
                     mp.erase(tail->prev->key);
                     mp[key] = tail->prev;
@@ -84,7 +84,7 @@ public:
                 {
                     Node* newNode = new Node(key, value);
                     mp[key] = newNode;
-                    // count++;
+                    count++;
 
                     head->next->prev = newNode;
                     newNode->next = head->next;
