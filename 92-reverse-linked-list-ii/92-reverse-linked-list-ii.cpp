@@ -15,48 +15,76 @@ public:
         if(head->next==NULL || left==right)
             return head;
         
-        ListNode* prevN = NULL;
-        ListNode* curr = head;
-        ListNode* head1 = NULL;
-        ListNode* temp = NULL;
-        ListNode* lastNode = NULL;
-        int cnt = 1;
+        ListNode* dummy = new ListNode(-1);
+        dummy->next = head;
+        ListNode* it = dummy;
+        ListNode*  prevIt = NULL;
         
-        while(curr!=NULL)
+        for(int i=0;i<left;i++)
         {
-            if(cnt==left)
-            {
-                head1 = curr;
-                break;
-            }
-            
-            prevN = curr;
-            curr = curr->next;
-            cnt++;
+            prevIt = it;
+            it = it->next;
         }
         
+        ListNode* itR = it;
+        ListNode* prevR = prevIt;
         
-        while(curr!=NULL && cnt<=right)
+        for(int i=left;i<=right;i++)
         {
-            temp = curr->next;
-            curr->next = lastNode;
-            lastNode = curr;
-            curr = temp;
+            ListNode* forward = itR->next;
+            itR->next = prevR;
             
-            cnt++;
+            prevR = itR;
+            itR = forward;
         }
         
-        if(prevN!=NULL)
-            prevN->next = lastNode;
-        else
-            head = lastNode;
+        prevIt->next = prevR;
+        it->next = itR;
+        
+        return dummy->next;
+        
+//         ListNode* prevN = NULL;
+//         ListNode* curr = head;
+//         ListNode* head1 = NULL;
+//         ListNode* temp = NULL;
+//         ListNode* lastNode = NULL;
+//         int cnt = 1;
+        
+//         while(curr!=NULL)
+//         {
+//             if(cnt==left)
+//             {
+//                 head1 = curr;
+//                 break;
+//             }
+            
+//             prevN = curr;
+//             curr = curr->next;
+//             cnt++;
+//         }
         
         
-        head1->next = temp;
+//         while(curr!=NULL && cnt<=right)
+//         {
+//             temp = curr->next;
+//             curr->next = lastNode;
+//             lastNode = curr;
+//             curr = temp;
+            
+//             cnt++;
+//         }
+        
+//         if(prevN!=NULL)
+//             prevN->next = lastNode;
+//         else
+//             head = lastNode;
+        
+        
+//         head1->next = temp;
         
 
         
-        return head;
+//         return head;
         
     }
 };
