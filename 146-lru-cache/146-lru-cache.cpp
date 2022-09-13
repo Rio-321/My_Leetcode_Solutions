@@ -1,99 +1,101 @@
-class LRUCache {
+class Node{
+public:
+    int key;
+    int value;
+    Node* prev;
+    Node* next;
+    
+    Node(int key, int value)
+    {
+        this->key = key;
+        this->value = value;
+        prev = NULL;
+        next = NULL;
+    }
+    
+};
+
+
+class LRUCache{
 public:
     
-    class Node{
-        public:
-            int key;
-            int value;
-            Node* prev;
-            Node* next;
-        
-        Node(int key, int value)
-        {
-            this->key = key;
-            this->value = value;
-            
-            prev = NULL;
-            next = NULL;
-        }
-    };
-    
     int cap;
-    int count = 0;
-    unordered_map<int, Node*> mp;
     Node* head = new Node(-1, -1);
     Node* tail = new Node(-1, -1);
-
-    LRUCache(int capacity) 
+    unordered_map<int, Node*> keyMap;
+    
+    LRUCache(int capacity)
     {
         cap = capacity;
         head->next = tail;
-        tail->prev = head; 
+        tail->prev = head;
     }
     
-    
-    void changePos(Node* resnode)
+    void changePos(Node* curNode)
     {
-          resnode->prev->next = resnode->next;
-          resnode->next->prev = resnode->prev;
+        curNode->prev->next = curNode->next;
+        curNode->next->prev = curNode->prev;
         
-          resnode->next = head->next;
-          resnode->next->prev = resnode;
-          resnode->prev = head;
-          head->next = resnode;
+        curNode->next = head->next;
+        head->next = curNode;
+        
+        curNode->next->prev = curNode;
+        curNode->prev = head;
     }
- 
     
-    int get(int key) 
+    int get(int key)
     {
-        if(mp.find(key) != mp.end())
+        if(keyMap.find(key) != keyMap.end())
         {
-            Node* curr = mp[key];
-            int res = curr->value;
-            
+            Node* curr = keyMap[key];
+            int val = curr->value;
             changePos(curr);
-            
-            return res;
+            return val;
         }
         
         return -1;
     }
     
-    void put(int key, int value) 
+    
+    void put(int key, int value)
     {
-           if(mp.find(key) != mp.end())
-           {
-               Node* curr = mp[key];
-               curr->value = value;
-               
-               changePos(curr);
-           }
+        if(keyMap.find(key) != keyMap.end())  
+        {
+            Node* temp = keyMap[key];
+            temp->value = value;
+            changePos(temp);
+        }
+        else
+        {
+            if(keyMap.size() == cap)
+            {
+                Node* temp = tail->prev;
+                keyMap.erase(temp->key);
+                
+                temp->key = key;
+                temp->value = value;
+                changePos(temp); 
+                
+                keyMap[key] = temp;
+                
+            }
             else
             {
-                if(count == cap)
-                {   
-                    mp.erase(tail->prev->key);
-                    mp[key] = tail->prev;
-
-                    tail->prev->value = value;
-                    tail->prev->key = key;
-                    changePos(tail->prev);
-
-                }
-                else
-                {
-                    Node* newNode = new Node(key, value);
-                    mp[key] = newNode;
-                    count++;
-
-                    head->next->prev = newNode;
-                    newNode->next = head->next;
-                    head->next = newNode;
-                    newNode->prev = head;
-
-                }
+                Node* newNode = new Node(key, value);
+            
+                newNode->next = head->next;
+                head->next = newNode;
+                newNode->next->prev = newNode;
+                newNode->prev = head;
+                
+                keyMap[key] = newNode;
             }
+            
+               
+            
+        }
     }
+    
 };
 
 /**
