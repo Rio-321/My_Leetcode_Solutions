@@ -33,12 +33,14 @@ public:
                     int r = (y-1)/n;
                     int c = (y-1)%n;
                     
-//                     r = n-1-r;
+                    if(r%2 == 1)
+                        c = n-1-c;
                     
-//                     if(r%2 == 1)
-//                         c = n-1-c;
+                     r = n-1-r;
+           
                     
-                    int &v = board[n-1-r][(r%2==0)?c:(n-1-c)];
+                    int &v = board[r][c];
+                    
                     if(v == 0)
                         continue;
                     
