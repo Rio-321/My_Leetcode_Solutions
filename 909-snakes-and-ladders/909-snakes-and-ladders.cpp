@@ -41,17 +41,16 @@ public:
                     
                     int &v = board[r][c];
                     
-                    if(v == 0)
-                        continue;
+                    if(v == 0) continue;
                     
                     if(v > 0)
+                    {
                         y = v;
+                    }
                     
-                    if(y == goal)
-                        return ans;
+                    if(y == goal) return ans;
                     
                     v = 0;
-                    
                     q.push(y);
                 }
             }
@@ -63,4 +62,3 @@ public:
 
     }
 };
-
