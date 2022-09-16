@@ -13,6 +13,8 @@ public:
         int ans = 0;
         int goal = n*n;
         
+        int res = 0;
+        
         while(!q.empty())
         {
             ans++;
@@ -41,7 +43,7 @@ public:
                     
                     int v = board[r][c];
                     
-                    if(v == 0) continue;
+                    if(board[r][c] == 0) continue; // already visited cell
                     
                     if(v > 0)
                     {
