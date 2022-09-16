@@ -39,7 +39,7 @@ public:
                      r = n-1-r;
            
                     
-                    int &v = board[r][c];
+                    int v = board[r][c];
                     
                     if(v == 0) continue;
                     
@@ -50,7 +50,8 @@ public:
                     
                     if(y == goal) return ans;
                     
-                    v = 0;
+                    // v = 0;
+                    board[r][c] = 0;
                     q.push(y);
                 }
             }
